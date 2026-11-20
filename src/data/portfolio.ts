@@ -13,6 +13,7 @@ export interface Profile {
   location: string;
   linkedin: string;
   linkedinDisplay: string;
+  image: string;
 }
 
 export interface NavLink {
@@ -74,6 +75,7 @@ export const profile: Profile = {
   location: "Thrissur, Kerala, India - 680304",
   linkedin: "https://www.linkedin.com/in/gouthaman-kr",
   linkedinDisplay: "linkedin.com/in/gouthaman-kr",
+  image: "/images/profile-transparent.png",
 };
 
 export const navLinks: NavLink[] = [
