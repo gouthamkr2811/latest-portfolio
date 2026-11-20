@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gouthaman.dev"),
+  metadataBase: new URL("https://gouthamkr.in"),
   title: "Gouthaman K R — Python & Django Backend Developer",
   description:
     "Backend developer specializing in scalable microservices, high-throughput REST APIs, and robust payment & search infrastructures using Python, Django, and modern cloud technologies.",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Gouthaman K R — Python & Django Backend Developer",
     description:
       "Architecting scalable microservices, high-throughput REST APIs, and robust payment & search infrastructures.",
-    url: "https://gouthaman.dev",
+    url: "https://gouthamkr.in",
     siteName: "Gouthaman K R Portfolio",
     locale: "en_US",
     type: "website",
