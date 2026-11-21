@@ -21,7 +21,7 @@ export function AnimatedBackground() {
   const orb3Ref = useRef<HTMLDivElement>(null);
   const orb4Ref = useRef<HTMLDivElement>(null);
 
-  // GSAP animation for 100% pure emerald & mint green ambient refraction lights
+  // GSAP animation for luminous light green ambient refraction lights
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -34,7 +34,7 @@ export function AnimatedBackground() {
     }
 
     const ctx = gsap.context(() => {
-      // Orb 1: Pure Emerald Green
+      // Orb 1: Luminous Light Emerald Green
       if (orb1Ref.current) {
         gsap.to(orb1Ref.current, {
           x: "110px",
@@ -47,7 +47,7 @@ export function AnimatedBackground() {
         });
       }
 
-      // Orb 2: Deep Forest Mint Green
+      // Orb 2: Soft Mint Green
       if (orb2Ref.current) {
         gsap.to(orb2Ref.current, {
           x: "-100px",
@@ -61,7 +61,7 @@ export function AnimatedBackground() {
         });
       }
 
-      // Orb 3: Luminous Cyber Green
+      // Orb 3: Luminous Light Lime Green
       if (orb3Ref.current) {
         gsap.to(orb3Ref.current, {
           x: "90px",
@@ -75,7 +75,7 @@ export function AnimatedBackground() {
         });
       }
 
-      // Orb 4: Soft Leaf Green
+      // Orb 4: Pastel Sage Green
       if (orb4Ref.current) {
         gsap.to(orb4Ref.current, {
           x: "-80px",
@@ -93,7 +93,7 @@ export function AnimatedBackground() {
     return () => ctx.revert();
   }, []);
 
-  // Canvas particle constellation simulation - ONLY Green Spectrum
+  // Canvas particle constellation simulation - 100% Light Green Spectrum
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -109,12 +109,12 @@ export function AnimatedBackground() {
     const particleCount = Math.min(Math.floor((width * height) / 22000), 42);
     const connectionDistance = 140;
 
-    // 100% Green Palette - No pink, no purple, no blue
+    // Luminous Light Green Palette
     const colors = [
-      "rgba(16, 185, 129, ", // emerald (#10b981)
-      "rgba(52, 211, 153, ", // mint (#34d399)
-      "rgba(34, 197, 94, ",  // vivid green (#22c55e)
-      "rgba(74, 222, 128, ", // light neon green (#4ade80)
+      "rgba(110, 231, 183, ", // light emerald (#6ee7b7)
+      "rgba(167, 243, 208, ", // soft pastel mint (#a7f3d0)
+      "rgba(52, 211, 153, ",  // bright mint (#34d399)
+      "rgba(134, 239, 172, ", // light neon lime (#86efac)
     ];
 
     for (let i = 0; i < particleCount; i++) {
@@ -125,7 +125,7 @@ export function AnimatedBackground() {
         vy: (Math.random() - 0.5) * 0.35,
         radius: Math.random() * 1.5 + 0.6,
         color: colors[Math.floor(Math.random() * colors.length)],
-        baseAlpha: Math.random() * 0.4 + 0.25,
+        baseAlpha: Math.random() * 0.45 + 0.3,
       });
     }
 
@@ -198,12 +198,12 @@ export function AnimatedBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.18;
+            const alpha = (1 - dist / connectionDistance) * 0.22;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.strokeStyle = `rgba(110, 231, 183, ${alpha})`;
+            ctx.lineWidth = 0.65;
             ctx.stroke();
           }
         }
@@ -224,7 +224,7 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#03050a]">
-      {/* Dynamic Video Wallpaper - 100% Pure Emerald Green (Sepia + 90deg Hue Shift eliminates all pink/red/purple) */}
+      {/* Dynamic Video Wallpaper - Luminous Light Green Flora */}
       <video
         ref={videoRef}
         autoPlay
@@ -233,42 +233,42 @@ export function AnimatedBackground() {
         playsInline
         poster="/videos/background-poster.jpg"
         style={{
-          filter: "sepia(100%) hue-rotate(90deg) saturate(380%) brightness(0.92) contrast(1.18)",
+          filter: "sepia(100%) hue-rotate(78deg) saturate(220%) brightness(1.28) contrast(1.08)",
         }}
-        className="absolute inset-0 w-full h-full object-cover opacity-75 will-change-transform"
+        className="absolute inset-0 w-full h-full object-cover opacity-80 will-change-transform"
       >
         <source src="/videos/background.mp4" type="video/mp4" />
       </video>
 
-      {/* Cinematic Dark Green & Charcoal Tint Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#03050a]/80 via-emerald-950/20 to-[#03050a]/90 backdrop-blur-[1px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_20%,#03050a_85%)] opacity-90" />
+      {/* Cinematic Luminous Soft Tint Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#03050a]/70 via-emerald-950/15 to-[#03050a]/85 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_25%,#03050a_85%)] opacity-85" />
 
-      {/* Pure Green Refractive Glass Ambient Orbs - Zero Pink / Purple */}
+      {/* Luminous Light Green Ambient Blur Orbs */}
       <div
         ref={orb1Ref}
-        className="absolute -top-36 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/18 blur-[160px] will-change-transform mix-blend-screen"
+        className="absolute -top-36 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-300/22 blur-[160px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb2Ref}
-        className="absolute top-1/3 -right-24 w-[650px] h-[650px] rounded-full bg-emerald-400/14 blur-[170px] will-change-transform mix-blend-screen"
+        className="absolute top-1/3 -right-24 w-[650px] h-[650px] rounded-full bg-teal-200/18 blur-[170px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb3Ref}
-        className="absolute -bottom-48 left-1/3 w-[700px] h-[700px] rounded-full bg-teal-500/15 blur-[180px] will-change-transform mix-blend-screen"
+        className="absolute -bottom-48 left-1/3 w-[700px] h-[700px] rounded-full bg-green-300/20 blur-[180px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb4Ref}
-        className="absolute top-2/3 -left-32 w-[520px] h-[520px] rounded-full bg-green-600/12 blur-[160px] will-change-transform mix-blend-screen"
+        className="absolute top-2/3 -left-32 w-[520px] h-[520px] rounded-full bg-emerald-200/16 blur-[160px] will-change-transform mix-blend-screen"
       />
 
       {/* Subtle Apple dot-mesh texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(16,185,129,0.06)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_35%,#000_65%,transparent_100%)] opacity-50" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(110,231,183,0.08)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_35%,#000_65%,transparent_100%)] opacity-55" />
 
-      {/* Canvas interactive node constellation - 100% Green */}
+      {/* Canvas interactive node constellation - Luminous Light Green */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-70"
+        className="absolute inset-0 w-full h-full opacity-75"
       />
     </div>
   );
