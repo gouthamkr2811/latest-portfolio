@@ -223,7 +223,7 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#03050a]">
-      {/* Dynamic Video Wallpaper from Pinterest */}
+      {/* Dynamic Video Wallpaper with Emerald Green Flower Transformation */}
       <video
         ref={videoRef}
         autoPlay
@@ -231,7 +231,10 @@ export function AnimatedBackground() {
         muted
         playsInline
         poster="/videos/background-poster.jpg"
-        className="absolute inset-0 w-full h-full object-cover opacity-65 filter brightness-[0.88] contrast-[1.08] saturate-[1.15]"
+        style={{
+          filter: "hue-rotate(55deg) saturate(2.35) brightness(1.02) contrast(1.18)",
+        }}
+        className="absolute inset-0 w-full h-full object-cover opacity-70 will-change-transform"
       >
         <source src="/videos/background.mp4" type="video/mp4" />
       </video>
