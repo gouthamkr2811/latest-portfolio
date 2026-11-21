@@ -221,32 +221,29 @@ export function Hero() {
             {/* Developer Portrait in Apple VisionOS Spatial Glass Frame */}
             <div className="relative w-full max-w-[340px] sm:max-w-[360px] flex justify-center">
               {/* Radial glow directly behind the photo - Pure Emerald */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-gradient-to-tr from-emerald-500/30 via-emerald-400/20 to-transparent blur-3xl pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-gradient-to-tr from-emerald-500/30 via-emerald-400/20 to-transparent blur-3xl pointer-events-none" />
 
               {/* Apple Glass Spatial Frame */}
               <div
                 ref={photoWrapperRef}
-                className="apple-glass-card rounded-[2rem] p-2.5 sm:p-3 relative z-10 shadow-[0_24px_60px_rgba(0,0,0,0.7),inset_0_1px_1.5px_rgba(255,255,255,0.4)]"
+                className="apple-glass-card rounded-[2.2rem] p-3 sm:p-3.5 relative z-10 shadow-[0_30px_70px_rgba(0,0,0,0.75),inset_0_1px_2px_rgba(255,255,255,0.45)] group transition-transform duration-300"
               >
-                <div className="relative w-[235px] h-[305px] sm:w-[255px] sm:h-[325px] rounded-2xl overflow-hidden bg-gradient-to-b from-white/[0.08] via-transparent to-black/85 border border-white/15">
+                <div className="relative w-[260px] h-[440px] sm:w-[285px] sm:h-[485px] rounded-[1.6rem] overflow-hidden bg-black/90 border border-white/20 shadow-inner">
                   <Image
                     src={profile.image}
                     alt={profile.name}
                     fill
-                    sizes="(max-width: 640px) 240px, 260px"
+                    sizes="(max-width: 640px) 260px, 285px"
                     priority
-                    className="object-cover object-top filter contrast-[1.03] brightness-[1.02]"
+                    className="object-cover object-center filter contrast-[1.05] brightness-[1.02] transition-transform duration-500 group-hover:scale-[1.03]"
                   />
 
-                  {/* Soft bottom vignette overlay */}
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
-
-                  {/* Name tag strip at bottom of card */}
-                  <div className="absolute bottom-3 inset-x-3 text-center">
-                    <p className="text-xs font-semibold text-white tracking-wide">
+                  {/* Soft bottom glass banner */}
+                  <div className="absolute bottom-3 inset-x-3 apple-glass-pill rounded-xl py-2 px-3 text-center border border-white/20 shadow-lg">
+                    <p className="text-xs font-bold text-white tracking-wider uppercase font-mono">
                       {profile.name}
                     </p>
-                    <p className="text-[10px] font-mono text-emerald-400 mt-0.5">
+                    <p className="text-[10px] font-mono text-emerald-300 mt-0.5">
                       Python & Django Engineer
                     </p>
                   </div>
@@ -256,7 +253,7 @@ export function Hero() {
               {/* Floating Glass Badge 1 (Top Left) */}
               <div
                 ref={badge1Ref}
-                className="apple-glass-pill absolute -top-3 -left-3 sm:-left-4 z-20 flex items-center gap-2 rounded-full px-3.5 py-1.5 shadow-xl"
+                className="apple-glass-pill absolute -top-4 -left-4 sm:-left-6 z-20 flex items-center gap-2 rounded-full px-4 py-2 shadow-xl"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -270,7 +267,7 @@ export function Hero() {
               {/* Floating Glass Badge 2 (Bottom Right) */}
               <div
                 ref={badge2Ref}
-                className="apple-glass-pill absolute -bottom-2 -right-3 sm:-right-4 z-20 flex items-center gap-2 rounded-full px-3.5 py-1.5 shadow-xl"
+                className="apple-glass-pill absolute -bottom-3 -right-4 sm:-right-6 z-20 flex items-center gap-2 rounded-full px-4 py-2 shadow-xl"
               >
                 <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
                 <span className="text-xs font-mono font-medium text-emerald-200">

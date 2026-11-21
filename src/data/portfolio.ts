@@ -75,7 +75,7 @@ export const profile: Profile = {
   location: "Thrissur, Kerala, India - 680304",
   linkedin: "https://www.linkedin.com/in/gouthaman-kr",
   linkedinDisplay: "linkedin.com/in/gouthaman-kr",
-  image: "/images/profile-transparent.png",
+  image: "/images/profile-hero.jpg",
 };
 
 export const navLinks: NavLink[] = [
