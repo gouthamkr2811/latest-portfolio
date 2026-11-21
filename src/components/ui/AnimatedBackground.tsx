@@ -15,6 +15,7 @@ interface Particle {
 
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const orb1Ref = useRef<HTMLDivElement>(null);
   const orb2Ref = useRef<HTMLDivElement>(null);
   const orb3Ref = useRef<HTMLDivElement>(null);
@@ -25,7 +26,12 @@ export function AnimatedBackground() {
     if (typeof window === "undefined") return;
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mediaQuery.matches) return;
+    if (mediaQuery.matches) {
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
+      return;
+    }
 
     const ctx = gsap.context(() => {
       // Orb 1: Emerald / Mint
@@ -100,7 +106,7 @@ export function AnimatedBackground() {
     let height = (canvas.height = window.innerHeight);
 
     const particles: Particle[] = [];
-    const particleCount = Math.min(Math.floor((width * height) / 20000), 48);
+    const particleCount = Math.min(Math.floor((width * height) / 22000), 42);
     const connectionDistance = 140;
 
     const colors = [
@@ -114,11 +120,11 @@ export function AnimatedBackground() {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 1.6 + 0.7,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        radius: Math.random() * 1.5 + 0.6,
         color: colors[Math.floor(Math.random() * colors.length)],
-        baseAlpha: Math.random() * 0.4 + 0.25,
+        baseAlpha: Math.random() * 0.4 + 0.2,
       });
     }
 
@@ -173,10 +179,10 @@ export function AnimatedBackground() {
         const dxMouse = mouseX - p.x;
         const dyMouse = mouseY - p.y;
         const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-        if (distMouse < 160 && distMouse > 0) {
-          const force = (160 - distMouse) / 160;
-          p.x -= (dxMouse / distMouse) * force * 1.2;
-          p.y -= (dyMouse / distMouse) * force * 1.2;
+        if (distMouse < 150 && distMouse > 0) {
+          const force = (150 - distMouse) / 150;
+          p.x -= (dxMouse / distMouse) * force * 1.1;
+          p.y -= (dyMouse / distMouse) * force * 1.1;
         }
 
         ctx.beginPath();
@@ -191,12 +197,12 @@ export function AnimatedBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.18;
+            const alpha = (1 - dist / connectionDistance) * 0.16;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-            ctx.lineWidth = 0.7;
+            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         }
@@ -216,32 +222,49 @@ export function AnimatedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#03050a]">
+      {/* Dynamic Video Wallpaper from Pinterest */}
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/videos/background-poster.jpg"
+        className="absolute inset-0 w-full h-full object-cover opacity-65 filter brightness-[0.88] contrast-[1.08] saturate-[1.15]"
+      >
+        <source src="/videos/background.mp4" type="video/mp4" />
+      </video>
+
+      {/* Cinematic Tint & Vignette Overlays for Contrast & Frosted Refraction */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#03050a]/75 via-[#03050a]/50 to-[#03050a]/85 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_25%,#03050a_85%)] opacity-85" />
+
       {/* Apple VisionOS Refractive Glass Gradient Orbs */}
       <div
         ref={orb1Ref}
-        className="absolute -top-36 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/18 blur-[160px] will-change-transform"
+        className="absolute -top-36 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/15 blur-[160px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb2Ref}
-        className="absolute top-1/3 -right-24 w-[650px] h-[650px] rounded-full bg-blue-600/16 blur-[170px] will-change-transform"
+        className="absolute top-1/3 -right-24 w-[650px] h-[650px] rounded-full bg-blue-600/14 blur-[170px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb3Ref}
-        className="absolute -bottom-48 left-1/3 w-[700px] h-[700px] rounded-full bg-cyan-500/14 blur-[180px] will-change-transform"
+        className="absolute -bottom-48 left-1/3 w-[700px] h-[700px] rounded-full bg-cyan-500/12 blur-[180px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb4Ref}
-        className="absolute top-2/3 -left-32 w-[520px] h-[520px] rounded-full bg-purple-600/12 blur-[160px] will-change-transform"
+        className="absolute top-2/3 -left-32 w-[520px] h-[520px] rounded-full bg-purple-600/10 blur-[160px] will-change-transform mix-blend-screen"
       />
 
       {/* Subtle Apple dot-mesh texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_35%,#000_65%,transparent_100%)] opacity-60" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_35%,#000_65%,transparent_100%)] opacity-40" />
 
       {/* Canvas interactive node constellation */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-70"
+        className="absolute inset-0 w-full h-full opacity-65"
       />
     </div>
   );
