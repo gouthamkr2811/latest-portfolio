@@ -9,10 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#09090b",
+        background: "#050811",
+        surface: {
+          DEFAULT: "rgba(12, 19, 31, 0.7)",
+          card: "rgba(10, 16, 28, 0.75)",
+          border: "rgba(16, 185, 129, 0.15)",
+        },
         accent: {
-          DEFAULT: "#a855f7",
-          dark: "#9333ea",
+          DEFAULT: "#10b981", // Electric Emerald
+          dark: "#059669",
+          light: "#34d399",
+          cyan: "#06b6d4",
+          teal: "#14b8a6",
         },
       },
       fontFamily: {

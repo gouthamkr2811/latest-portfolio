@@ -46,7 +46,7 @@ export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
           {subtitle}
         </p>
       )}
-      <div className="mt-4 mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-accent to-accent-dark" />
+      <div className="mt-4 mx-auto h-1 w-20 rounded-full bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 shadow-[0_0_12px_rgba(16,185,129,0.5)]" />
     </div>
   );
 }

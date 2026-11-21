@@ -63,7 +63,7 @@ export function Projects() {
               ref={(el) => {
                 if (el) cardRefs.current[i] = el;
               }}
-              className="glow-border flex flex-col rounded-xl backdrop-blur-md bg-white/5 border border-white/10 overflow-hidden transition-all duration-300 hover:border-accent/40"
+              className="glow-border flex flex-col rounded-xl backdrop-blur-xl bg-slate-900/60 border border-emerald-500/15 overflow-hidden transition-all duration-300 hover:border-emerald-400/40 hover:bg-slate-900/80 shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
             >
               {/* Card header */}
               <div className="p-6 flex-1 flex flex-col">

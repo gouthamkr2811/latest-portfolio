@@ -315,7 +315,7 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-dark"
+                className="w-full flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-slate-950 transition-all hover:bg-accent-light hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
               >
                 <Send className="h-4 w-4" />
                 Send Message

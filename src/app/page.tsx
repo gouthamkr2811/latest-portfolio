@@ -7,12 +7,14 @@ import { Projects } from "@/components/sections/Projects";
 import { Certifications } from "@/components/sections/Certifications";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
+import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
 
 export default function Home() {
   return (
-    <>
+    <div className="relative min-h-screen bg-background text-zinc-100 selection:bg-accent/30 selection:text-white">
+      <AnimatedBackground />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <About />
         <TechStack />
@@ -22,6 +24,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -45,7 +45,7 @@ export function GlowingCard({
   return (
     <div
       ref={cardRef}
-      className={`glow-border rounded-xl backdrop-blur-md bg-white/5 border border-white/10 p-6 transition-all duration-300 hover:border-accent/40 ${className}`}
+      className={`glow-border rounded-xl backdrop-blur-xl bg-slate-900/60 border border-emerald-500/15 p-6 transition-all duration-300 hover:border-emerald-400/40 hover:bg-slate-900/80 shadow-[0_4px_24px_rgba(0,0,0,0.35)] ${className}`}
     >
       {children}
     </div>

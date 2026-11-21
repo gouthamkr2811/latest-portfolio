@@ -146,12 +146,10 @@ export function Hero() {
       ref={heroRef}
       className="relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden"
     >
-      {/* Background ambient lighting */}
+      {/* Background subtle light accent */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[520px] h-[520px] rounded-full bg-accent/10 blur-[130px]" />
-        <div className="absolute bottom-10 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-dark/15 blur-[120px]" />
-        {/* Subtle grid backdrop */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30" />
+        <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[520px] h-[520px] rounded-full bg-emerald-500/10 blur-[140px]" />
+        <div className="absolute bottom-10 right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-500/10 blur-[130px]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 w-full">
@@ -192,13 +190,13 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <a
                 href="#projects"
-                className="rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-dark hover:shadow-[0_0_24px_rgba(168,85,247,0.45)]"
+                className="rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-accent-light hover:shadow-[0_0_24px_rgba(16,185,129,0.5)]"
               >
                 View Projects
               </a>
               <a
                 href="#contact"
-                className="rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-white/10 hover:border-white/30"
+                className="rounded-lg border border-emerald-500/30 bg-slate-900/60 backdrop-blur-md px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-emerald-500/10 hover:border-emerald-500/60"
               >
                 Get in Touch
               </a>
@@ -207,7 +205,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile"
-                className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-3 text-zinc-300 transition-colors hover:bg-white/10 hover:text-accent"
+                className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-slate-900/60 backdrop-blur-md p-3 text-zinc-300 transition-colors hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-accent"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
@@ -223,12 +221,12 @@ export function Hero() {
             {/* Developer Portrait with Glowing Aura and Floating Badges */}
             <div className="relative w-full max-w-[340px] sm:max-w-[360px] flex justify-center">
               {/* Radial glow directly behind the photo */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-accent/30 via-purple-500/20 to-transparent blur-3xl pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-emerald-500/30 via-cyan-500/20 to-transparent blur-3xl pointer-events-none" />
 
               {/* Photo frame */}
               <div
                 ref={photoWrapperRef}
-                className="relative z-10 w-[240px] h-[300px] sm:w-[260px] sm:h-[320px] rounded-2xl overflow-hidden border border-accent/30 bg-gradient-to-b from-purple-950/40 via-zinc-900/60 to-zinc-950/90 shadow-[0_12px_40px_rgba(0,0,0,0.6)] backdrop-blur-sm"
+                className="relative z-10 w-[240px] h-[300px] sm:w-[260px] sm:h-[320px] rounded-2xl overflow-hidden border border-emerald-500/30 bg-gradient-to-b from-emerald-950/40 via-slate-900/70 to-slate-950/95 shadow-[0_12px_40px_rgba(0,0,0,0.65)] backdrop-blur-md"
               >
                 {/* Decorative border highlight */}
                 <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 pointer-events-none" />
@@ -243,14 +241,14 @@ export function Hero() {
                 />
 
                 {/* Subtle gradient overlay at bottom of photo */}
-                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent pointer-events-none" />
 
                 {/* Name tag strip at bottom of card */}
                 <div className="absolute bottom-2.5 inset-x-3 text-center">
                   <p className="text-xs font-semibold text-white tracking-wide">
                     {profile.name}
                   </p>
-                  <p className="text-[10px] font-mono text-accent">
+                  <p className="text-[10px] font-mono text-emerald-400">
                     Python & Django Engineer
                   </p>
                 </div>
@@ -259,7 +257,7 @@ export function Hero() {
               {/* Floating Badge 1 (Top Left) */}
               <div
                 ref={badge1Ref}
-                className="absolute -top-3 -left-3 sm:-left-4 z-20 flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-zinc-900/90 backdrop-blur-md px-3 py-1.5 shadow-lg shadow-black/40"
+                className="absolute -top-3 -left-3 sm:-left-4 z-20 flex items-center gap-2 rounded-lg border border-emerald-500/40 bg-slate-950/90 backdrop-blur-md px-3 py-1.5 shadow-lg shadow-black/50"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -273,17 +271,17 @@ export function Hero() {
               {/* Floating Badge 2 (Bottom Right) */}
               <div
                 ref={badge2Ref}
-                className="absolute -bottom-2 -right-3 sm:-right-4 z-20 flex items-center gap-2 rounded-lg border border-accent/30 bg-zinc-900/90 backdrop-blur-md px-3 py-1.5 shadow-lg shadow-black/40"
+                className="absolute -bottom-2 -right-3 sm:-right-4 z-20 flex items-center gap-2 rounded-lg border border-cyan-500/40 bg-slate-950/90 backdrop-blur-md px-3 py-1.5 shadow-lg shadow-black/50"
               >
-                <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
-                <span className="text-xs font-mono font-medium text-purple-200">
+                <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400" />
+                <span className="text-xs font-mono font-medium text-cyan-200">
                   Microservices Architecture
                 </span>
               </div>
             </div>
 
             {/* Stylized Terminal / API Response Card */}
-            <div className="w-full max-w-[420px] rounded-xl backdrop-blur-md bg-zinc-950/80 border border-white/10 overflow-hidden shadow-2xl transition-all duration-300 hover:border-accent/40">
+            <div className="w-full max-w-[420px] rounded-xl backdrop-blur-md bg-slate-950/85 border border-emerald-500/20 overflow-hidden shadow-2xl transition-all duration-300 hover:border-emerald-500/50">
               {/* Terminal header */}
               <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5 bg-white/[0.02]">
                 <div className="flex items-center gap-1.5">

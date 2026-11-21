@@ -64,7 +64,7 @@ export function Experience() {
               className="relative pl-12 pb-12 last:pb-0 sm:pl-20"
             >
               {/* Timeline dot */}
-              <div className="absolute left-2.5 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-accent bg-zinc-950 shadow-[0_0_10px_rgba(168,85,247,0.8)] sm:left-6.5" />
+              <div className="absolute left-2.5 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-emerald-400 bg-slate-950 shadow-[0_0_12px_rgba(16,185,129,0.85)] sm:left-6.5" />
 
               <div className="rounded-xl backdrop-blur-md bg-white/5 border border-white/10 p-6 transition-all duration-300 hover:border-accent/40 hover:bg-white/[0.07]">
                 <div className="flex flex-wrap items-start justify-between gap-2">
