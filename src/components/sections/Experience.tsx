@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Briefcase, MapPin, Calendar } from "lucide-react";
+import { Briefcase, MapPin, Calendar, CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { experienceEntries } from "@/data/portfolio";
 
@@ -28,9 +28,9 @@ export function Experience() {
             once: true,
           },
           opacity: 0,
-          x: -28,
-          duration: 0.6,
-          delay: index * 0.1,
+          x: -32,
+          duration: 0.65,
+          delay: index * 0.12,
           ease: "power2.out",
         });
       });
@@ -43,17 +43,17 @@ export function Experience() {
     <section
       ref={sectionRef}
       id="experience"
-      className="py-20 sm:py-28 bg-white/[0.02]"
+      className="py-24 sm:py-32 relative"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Experience"
-          subtitle="Professional journey and key contributions."
+          title="Career Journey"
+          subtitle="Engineering milestones, architectural ownership, and key contributions."
         />
 
-        <div className="relative mx-auto max-w-3xl">
-          {/* Timeline line */}
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-accent/60 via-accent/25 to-transparent sm:left-8" />
+        <div className="relative mx-auto max-w-4xl">
+          {/* Timeline central glowing line */}
+          <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-400/80 via-emerald-400/30 to-transparent sm:left-8" />
 
           {experienceEntries.map((entry, i) => (
             <div
@@ -61,38 +61,44 @@ export function Experience() {
               ref={(el) => {
                 if (el) itemsRef.current[i] = el;
               }}
-              className="relative pl-12 pb-12 last:pb-0 sm:pl-20"
+              className="relative pl-12 pb-14 last:pb-0 sm:pl-20"
             >
-              {/* Timeline dot */}
-              <div className="absolute left-2.5 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-emerald-400 bg-slate-950 shadow-[0_0_12px_rgba(16,185,129,0.85)] sm:left-6.5" />
+              {/* Timeline glowing pulsing node */}
+              <div className="absolute left-2.5 top-2 h-4 w-4 rounded-full border-2 border-emerald-400 bg-black shadow-[0_0_16px_rgba(16,185,129,0.9)] sm:left-6.5 flex items-center justify-center">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+              </div>
 
-              <div className="apple-glass-card rounded-2xl p-6 sm:p-7 transition-all duration-300">
-                <div className="flex flex-wrap items-start justify-between gap-2">
+              {/* Apple Glass Experience Card */}
+              <div className="apple-glass-card rounded-[1.8rem] p-7 sm:p-8 transition-all duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-5">
                   <div>
-                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                      <Briefcase className="h-4 w-4 text-accent flex-shrink-0" />
+                    <h3 className="text-xl font-bold text-white flex items-center gap-2.5">
+                      <div className="rounded-lg bg-emerald-500/15 p-2 text-emerald-400">
+                        <Briefcase className="h-4 w-4" />
+                      </div>
                       {entry.role}
                     </h3>
-                    <div className="mt-1 flex flex-wrap items-center gap-3 text-sm text-zinc-400">
-                      <span className="inline-flex items-center gap-1">
-                        <MapPin className="h-3 w-3 text-zinc-500" />
+                    <div className="mt-2 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-zinc-400">
+                      <span className="inline-flex items-center gap-1.5 text-zinc-300">
+                        <MapPin className="h-3.5 w-3.5 text-emerald-400" />
                         {entry.location}
-                      </span>
-                      <span className="inline-flex items-center gap-1 font-mono text-xs text-accent/80">
-                        <Calendar className="h-3 w-3" />
-                        {entry.period}
                       </span>
                     </div>
                   </div>
+
+                  <span className="apple-glass-pill rounded-full px-4 py-1.5 text-xs font-mono text-emerald-300 self-start sm:self-auto flex items-center gap-1.5">
+                    <Calendar className="h-3.5 w-3.5" />
+                    {entry.period}
+                  </span>
                 </div>
 
-                <ul className="mt-4 space-y-2.5">
+                <ul className="mt-6 space-y-3">
                   {entry.bullets.map((bullet) => (
                     <li
                       key={bullet}
-                      className="flex gap-2.5 text-sm text-zinc-300 leading-relaxed"
+                      className="flex items-start gap-3 text-sm text-zinc-300 leading-relaxed"
                     >
-                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                      <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
                       <span>{bullet}</span>
                     </li>
                   ))}

@@ -130,64 +130,80 @@ export function Contact() {
   );
 
   return (
-    <section id="contact" className="py-20 sm:py-28">
+    <section id="contact" className="py-24 sm:py-32 relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Get in Touch"
-          subtitle="Have a project in mind? Let's talk."
+          title="Let's Connect"
+          subtitle="Have a backend architecture, microservices project, or full-stack opportunity in mind?"
         />
 
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Contact info */}
-          <GlowingCard>
-            <h3 className="text-lg font-semibold text-white mb-6">
-              Contact Information
-            </h3>
-            <div className="space-y-5">
-              {contactInfo.map((item) => {
-                const Icon = item.icon;
-                const content = (
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 rounded-lg bg-accent/10 p-2.5">
-                      <Icon className="h-5 w-5 text-accent" />
+          <GlowingCard className="p-7 sm:p-8 flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2">
+                Contact Information
+              </h3>
+              <p className="text-sm text-zinc-400 mb-6">
+                Feel free to reach out directly via email, phone, or LinkedIn.
+              </p>
+              <div className="space-y-4">
+                {contactInfo.map((item) => {
+                  const Icon = item.icon;
+                  const content = (
+                    <div className="flex items-start gap-4 p-3 rounded-2xl apple-glass-pill transition-all duration-200 hover:border-emerald-400/40">
+                      <div className="flex-shrink-0 rounded-xl bg-emerald-500/15 border border-emerald-400/30 p-2.5">
+                        <Icon className="h-5 w-5 text-emerald-400" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[11px] text-zinc-400 font-mono uppercase tracking-wider">
+                          {item.label}
+                        </p>
+                        <p className="text-sm text-zinc-200 font-medium mt-0.5 break-all">
+                          {item.value}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-xs text-zinc-500 uppercase tracking-wider">
-                        {item.label}
-                      </p>
-                      <p className="text-sm text-zinc-300 mt-0.5 break-all">
-                        {item.value}
-                      </p>
-                    </div>
-                  </div>
-                );
-
-                if (item.href) {
-                  const isExternal = item.href.startsWith("http");
-                  return (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      {...(isExternal
-                        ? { target: "_blank", rel: "noopener noreferrer" }
-                        : {})}
-                      className="block rounded-lg p-2 -m-2 transition-colors hover:bg-white/5"
-                    >
-                      {content}
-                    </a>
                   );
-                }
 
-                return <div key={item.label}>{content}</div>;
-              })}
+                  if (item.href) {
+                    const isExternal = item.href.startsWith("http");
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        {...(isExternal
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                        className="block group"
+                      >
+                        {content}
+                      </a>
+                    );
+                  }
+
+                  return <div key={item.label}>{content}</div>;
+                })}
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-zinc-400">
+              <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                Available immediately
+              </span>
+              <span>Thrissur, Kerala</span>
             </div>
           </GlowingCard>
 
           {/* Contact form */}
-          <GlowingCard>
-            <h3 className="text-lg font-semibold text-white mb-6">
+          <GlowingCard className="p-7 sm:p-8">
+            <h3 className="text-xl font-bold text-white mb-2">
               Send a Message
             </h3>
+            <p className="text-sm text-zinc-400 mb-6">
+              I typically reply within a few hours.
+            </p>
             <form onSubmit={handleSubmit} noValidate className="space-y-4">
               {/* Name */}
               <div>
