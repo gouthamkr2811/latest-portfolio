@@ -72,12 +72,69 @@ export function Hero() {
 
       if (photoWrapperRef.current) {
         gsap.to(photoWrapperRef.current, {
-          y: -5,
-          duration: 3.5,
+          y: -6,
+          duration: 3.2,
           repeat: -1,
           yoyo: true,
           ease: "sine.inOut",
         });
+      }
+
+      // Parallax 3D tilt on mousemove
+      const heroElement = heroRef.current;
+      if (heroElement && photoWrapperRef.current) {
+        const onMouseMove = (e: MouseEvent) => {
+          const rect = heroElement.getBoundingClientRect();
+          const relX = (e.clientX - rect.left) / rect.width - 0.5;
+          const relY = (e.clientY - rect.top) / rect.height - 0.5;
+
+          gsap.to(photoWrapperRef.current, {
+            rotationY: relX * 14,
+            rotationX: -relY * 14,
+            transformPerspective: 800,
+            duration: 0.6,
+            ease: "power1.out",
+          });
+
+          if (badge1Ref.current) {
+            gsap.to(badge1Ref.current, {
+              x: relX * 22,
+              duration: 0.5,
+              ease: "power1.out",
+            });
+          }
+
+          if (badge2Ref.current) {
+            gsap.to(badge2Ref.current, {
+              x: -relX * 20,
+              duration: 0.5,
+              ease: "power1.out",
+            });
+          }
+        };
+
+        const onMouseLeave = () => {
+          gsap.to(photoWrapperRef.current, {
+            rotationY: 0,
+            rotationX: 0,
+            duration: 0.9,
+            ease: "power2.out",
+          });
+          if (badge1Ref.current) {
+            gsap.to(badge1Ref.current, { x: 0, duration: 0.9, ease: "power2.out" });
+          }
+          if (badge2Ref.current) {
+            gsap.to(badge2Ref.current, { x: 0, duration: 0.9, ease: "power2.out" });
+          }
+        };
+
+        heroElement.addEventListener("mousemove", onMouseMove);
+        heroElement.addEventListener("mouseleave", onMouseLeave);
+
+        return () => {
+          heroElement.removeEventListener("mousemove", onMouseMove);
+          heroElement.removeEventListener("mouseleave", onMouseLeave);
+        };
       }
     }, heroRef);
 
