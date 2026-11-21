@@ -181,7 +181,7 @@ export function Hero() {
                 99.9% Uptime Architecture
               </span>
               <span className="apple-glass-pill inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-zinc-200">
-                <Zap className="h-3.5 w-3.5 text-cyan-400" />
+                <Zap className="h-3.5 w-3.5 text-emerald-400" />
                 Sub-20ms Search Latency
               </span>
             </div>
@@ -220,8 +220,8 @@ export function Hero() {
           >
             {/* Developer Portrait in Apple VisionOS Spatial Glass Frame */}
             <div className="relative w-full max-w-[340px] sm:max-w-[360px] flex justify-center">
-              {/* Radial glow directly behind the photo */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-gradient-to-tr from-emerald-500/25 via-cyan-500/20 to-blue-600/15 blur-3xl pointer-events-none" />
+              {/* Radial glow directly behind the photo - Pure Emerald */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-gradient-to-tr from-emerald-500/30 via-emerald-400/20 to-transparent blur-3xl pointer-events-none" />
 
               {/* Apple Glass Spatial Frame */}
               <div
@@ -272,8 +272,8 @@ export function Hero() {
                 ref={badge2Ref}
                 className="apple-glass-pill absolute -bottom-2 -right-3 sm:-right-4 z-20 flex items-center gap-2 rounded-full px-3.5 py-1.5 shadow-xl"
               >
-                <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400" />
-                <span className="text-xs font-mono font-medium text-cyan-200">
+                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                <span className="text-xs font-mono font-medium text-emerald-200">
                   Microservices Architecture
                 </span>
               </div>

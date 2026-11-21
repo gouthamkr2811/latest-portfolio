@@ -21,7 +21,7 @@ export function AnimatedBackground() {
   const orb3Ref = useRef<HTMLDivElement>(null);
   const orb4Ref = useRef<HTMLDivElement>(null);
 
-  // GSAP animation for Apple liquid glass ambient refraction lights
+  // GSAP animation for 100% pure emerald & mint green ambient refraction lights
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -34,7 +34,7 @@ export function AnimatedBackground() {
     }
 
     const ctx = gsap.context(() => {
-      // Orb 1: Emerald / Mint
+      // Orb 1: Pure Emerald Green
       if (orb1Ref.current) {
         gsap.to(orb1Ref.current, {
           x: "110px",
@@ -47,7 +47,7 @@ export function AnimatedBackground() {
         });
       }
 
-      // Orb 2: Sapphire Azure
+      // Orb 2: Deep Forest Mint Green
       if (orb2Ref.current) {
         gsap.to(orb2Ref.current, {
           x: "-100px",
@@ -61,7 +61,7 @@ export function AnimatedBackground() {
         });
       }
 
-      // Orb 3: Radiant Cyan
+      // Orb 3: Luminous Cyber Green
       if (orb3Ref.current) {
         gsap.to(orb3Ref.current, {
           x: "90px",
@@ -75,7 +75,7 @@ export function AnimatedBackground() {
         });
       }
 
-      // Orb 4: VisionOS Violet glow
+      // Orb 4: Soft Leaf Green
       if (orb4Ref.current) {
         gsap.to(orb4Ref.current, {
           x: "-80px",
@@ -93,7 +93,7 @@ export function AnimatedBackground() {
     return () => ctx.revert();
   }, []);
 
-  // Canvas particle constellation simulation
+  // Canvas particle constellation simulation - ONLY Green Spectrum
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -109,11 +109,12 @@ export function AnimatedBackground() {
     const particleCount = Math.min(Math.floor((width * height) / 22000), 42);
     const connectionDistance = 140;
 
+    // 100% Green Palette - No pink, no purple, no blue
     const colors = [
-      "rgba(16, 185, 129, ", // emerald
-      "rgba(6, 182, 212, ",  // cyan
-      "rgba(59, 130, 246, ", // sapphire
-      "rgba(255, 255, 255, ", // crisp white specular
+      "rgba(16, 185, 129, ", // emerald (#10b981)
+      "rgba(52, 211, 153, ", // mint (#34d399)
+      "rgba(34, 197, 94, ",  // vivid green (#22c55e)
+      "rgba(74, 222, 128, ", // light neon green (#4ade80)
     ];
 
     for (let i = 0; i < particleCount; i++) {
@@ -124,7 +125,7 @@ export function AnimatedBackground() {
         vy: (Math.random() - 0.5) * 0.35,
         radius: Math.random() * 1.5 + 0.6,
         color: colors[Math.floor(Math.random() * colors.length)],
-        baseAlpha: Math.random() * 0.4 + 0.2,
+        baseAlpha: Math.random() * 0.4 + 0.25,
       });
     }
 
@@ -197,11 +198,11 @@ export function AnimatedBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.16;
+            const alpha = (1 - dist / connectionDistance) * 0.18;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }
@@ -223,7 +224,7 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#03050a]">
-      {/* Dynamic Video Wallpaper with Emerald Green Flower Transformation */}
+      {/* Dynamic Video Wallpaper - 100% Pure Emerald Green (Sepia + 90deg Hue Shift eliminates all pink/red/purple) */}
       <video
         ref={videoRef}
         autoPlay
@@ -232,42 +233,42 @@ export function AnimatedBackground() {
         playsInline
         poster="/videos/background-poster.jpg"
         style={{
-          filter: "hue-rotate(55deg) saturate(2.35) brightness(1.02) contrast(1.18)",
+          filter: "sepia(100%) hue-rotate(90deg) saturate(380%) brightness(0.92) contrast(1.18)",
         }}
-        className="absolute inset-0 w-full h-full object-cover opacity-70 will-change-transform"
+        className="absolute inset-0 w-full h-full object-cover opacity-75 will-change-transform"
       >
         <source src="/videos/background.mp4" type="video/mp4" />
       </video>
 
-      {/* Cinematic Tint & Vignette Overlays for Contrast & Frosted Refraction */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#03050a]/75 via-[#03050a]/50 to-[#03050a]/85 backdrop-blur-[1px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_25%,#03050a_85%)] opacity-85" />
+      {/* Cinematic Dark Green & Charcoal Tint Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#03050a]/80 via-emerald-950/20 to-[#03050a]/90 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_20%,#03050a_85%)] opacity-90" />
 
-      {/* Apple VisionOS Refractive Glass Gradient Orbs */}
+      {/* Pure Green Refractive Glass Ambient Orbs - Zero Pink / Purple */}
       <div
         ref={orb1Ref}
-        className="absolute -top-36 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/15 blur-[160px] will-change-transform mix-blend-screen"
+        className="absolute -top-36 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/18 blur-[160px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb2Ref}
-        className="absolute top-1/3 -right-24 w-[650px] h-[650px] rounded-full bg-blue-600/14 blur-[170px] will-change-transform mix-blend-screen"
+        className="absolute top-1/3 -right-24 w-[650px] h-[650px] rounded-full bg-emerald-400/14 blur-[170px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb3Ref}
-        className="absolute -bottom-48 left-1/3 w-[700px] h-[700px] rounded-full bg-cyan-500/12 blur-[180px] will-change-transform mix-blend-screen"
+        className="absolute -bottom-48 left-1/3 w-[700px] h-[700px] rounded-full bg-teal-500/15 blur-[180px] will-change-transform mix-blend-screen"
       />
       <div
         ref={orb4Ref}
-        className="absolute top-2/3 -left-32 w-[520px] h-[520px] rounded-full bg-purple-600/10 blur-[160px] will-change-transform mix-blend-screen"
+        className="absolute top-2/3 -left-32 w-[520px] h-[520px] rounded-full bg-green-600/12 blur-[160px] will-change-transform mix-blend-screen"
       />
 
       {/* Subtle Apple dot-mesh texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_35%,#000_65%,transparent_100%)] opacity-40" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(16,185,129,0.06)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_35%,#000_65%,transparent_100%)] opacity-50" />
 
-      {/* Canvas interactive node constellation */}
+      {/* Canvas interactive node constellation - 100% Green */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-65"
+        className="absolute inset-0 w-full h-full opacity-70"
       />
     </div>
   );
