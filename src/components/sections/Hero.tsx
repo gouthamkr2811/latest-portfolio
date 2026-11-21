@@ -144,7 +144,7 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden"
+      className="relative min-h-[92vh] flex items-center pt-28 sm:pt-32 pb-16 overflow-hidden"
     >
       {/* Background subtle light accent */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -160,43 +160,43 @@ export function Hero() {
             className="text-center lg:text-left lg:col-span-7"
           >
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-mono text-accent">
-                <Sparkles className="h-3.5 w-3.5" />
+              <span className="apple-glass-pill inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-mono text-emerald-300 shadow-sm">
+                <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
                 {profile.badge}
               </span>
             </div>
 
-            <h1 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-5xl leading-[1.15] text-white">
+            <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.12] text-white">
               {profile.headline}
             </h1>
 
-            <p className="mt-4 text-base sm:text-lg text-zinc-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-zinc-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
               {profile.subheadline}
             </p>
 
             {/* Metric pill row */}
             <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-mono">
-              <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-zinc-300">
+              <span className="apple-glass-pill inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-zinc-200">
                 <Activity className="h-3.5 w-3.5 text-emerald-400" />
                 99.9% Uptime Architecture
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-zinc-300">
-                <Zap className="h-3.5 w-3.5 text-amber-400" />
+              <span className="apple-glass-pill inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-zinc-200">
+                <Zap className="h-3.5 w-3.5 text-cyan-400" />
                 Sub-20ms Search Latency
               </span>
             </div>
 
             {/* Action buttons */}
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
               <a
                 href="#projects"
-                className="rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-slate-950 transition-all duration-200 hover:bg-accent-light hover:shadow-[0_0_24px_rgba(16,185,129,0.5)]"
+                className="apple-primary-btn rounded-full px-7 py-3 text-sm font-semibold text-slate-950 tracking-wide"
               >
                 View Projects
               </a>
               <a
                 href="#contact"
-                className="rounded-lg border border-emerald-500/30 bg-slate-900/60 backdrop-blur-md px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:bg-emerald-500/10 hover:border-emerald-500/60"
+                className="apple-glass-button rounded-full px-7 py-3 text-sm font-medium text-white"
               >
                 Get in Touch
               </a>
@@ -205,7 +205,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile"
-                className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-slate-900/60 backdrop-blur-md p-3 text-zinc-300 transition-colors hover:bg-emerald-500/10 hover:border-emerald-500/30 hover:text-accent"
+                className="apple-glass-button inline-flex items-center justify-center rounded-full p-3 text-zinc-200 hover:text-white"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
@@ -218,46 +218,45 @@ export function Hero() {
             ref={visualRef}
             className="lg:col-span-5 flex flex-col items-center justify-center gap-6"
           >
-            {/* Developer Portrait with Glowing Aura and Floating Badges */}
+            {/* Developer Portrait in Apple VisionOS Spatial Glass Frame */}
             <div className="relative w-full max-w-[340px] sm:max-w-[360px] flex justify-center">
               {/* Radial glow directly behind the photo */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-tr from-emerald-500/30 via-cyan-500/20 to-transparent blur-3xl pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-gradient-to-tr from-emerald-500/25 via-cyan-500/20 to-blue-600/15 blur-3xl pointer-events-none" />
 
-              {/* Photo frame */}
+              {/* Apple Glass Spatial Frame */}
               <div
                 ref={photoWrapperRef}
-                className="relative z-10 w-[240px] h-[300px] sm:w-[260px] sm:h-[320px] rounded-2xl overflow-hidden border border-emerald-500/30 bg-gradient-to-b from-emerald-950/40 via-slate-900/70 to-slate-950/95 shadow-[0_12px_40px_rgba(0,0,0,0.65)] backdrop-blur-md"
+                className="apple-glass-card rounded-[2rem] p-2.5 sm:p-3 relative z-10 shadow-[0_24px_60px_rgba(0,0,0,0.7),inset_0_1px_1.5px_rgba(255,255,255,0.4)]"
               >
-                {/* Decorative border highlight */}
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 pointer-events-none" />
+                <div className="relative w-[235px] h-[305px] sm:w-[255px] sm:h-[325px] rounded-2xl overflow-hidden bg-gradient-to-b from-white/[0.08] via-transparent to-black/85 border border-white/15">
+                  <Image
+                    src={profile.image}
+                    alt={profile.name}
+                    fill
+                    sizes="(max-width: 640px) 240px, 260px"
+                    priority
+                    className="object-cover object-top filter contrast-[1.03] brightness-[1.02]"
+                  />
 
-                <Image
-                  src={profile.image}
-                  alt={profile.name}
-                  fill
-                  sizes="(max-width: 640px) 240px, 260px"
-                  priority
-                  className="object-cover object-top filter contrast-[1.03] brightness-[1.02]"
-                />
+                  {/* Soft bottom vignette overlay */}
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
 
-                {/* Subtle gradient overlay at bottom of photo */}
-                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent pointer-events-none" />
-
-                {/* Name tag strip at bottom of card */}
-                <div className="absolute bottom-2.5 inset-x-3 text-center">
-                  <p className="text-xs font-semibold text-white tracking-wide">
-                    {profile.name}
-                  </p>
-                  <p className="text-[10px] font-mono text-emerald-400">
-                    Python & Django Engineer
-                  </p>
+                  {/* Name tag strip at bottom of card */}
+                  <div className="absolute bottom-3 inset-x-3 text-center">
+                    <p className="text-xs font-semibold text-white tracking-wide">
+                      {profile.name}
+                    </p>
+                    <p className="text-[10px] font-mono text-emerald-400 mt-0.5">
+                      Python & Django Engineer
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Floating Badge 1 (Top Left) */}
+              {/* Floating Glass Badge 1 (Top Left) */}
               <div
                 ref={badge1Ref}
-                className="absolute -top-3 -left-3 sm:-left-4 z-20 flex items-center gap-2 rounded-lg border border-emerald-500/40 bg-slate-950/90 backdrop-blur-md px-3 py-1.5 shadow-lg shadow-black/50"
+                className="apple-glass-pill absolute -top-3 -left-3 sm:-left-4 z-20 flex items-center gap-2 rounded-full px-3.5 py-1.5 shadow-xl"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -268,10 +267,10 @@ export function Hero() {
                 </span>
               </div>
 
-              {/* Floating Badge 2 (Bottom Right) */}
+              {/* Floating Glass Badge 2 (Bottom Right) */}
               <div
                 ref={badge2Ref}
-                className="absolute -bottom-2 -right-3 sm:-right-4 z-20 flex items-center gap-2 rounded-lg border border-cyan-500/40 bg-slate-950/90 backdrop-blur-md px-3 py-1.5 shadow-lg shadow-black/50"
+                className="apple-glass-pill absolute -bottom-2 -right-3 sm:-right-4 z-20 flex items-center gap-2 rounded-full px-3.5 py-1.5 shadow-xl"
               >
                 <CheckCircle2 className="h-3.5 w-3.5 text-cyan-400" />
                 <span className="text-xs font-mono font-medium text-cyan-200">
@@ -280,19 +279,19 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Stylized Terminal / API Response Card */}
-            <div className="w-full max-w-[420px] rounded-xl backdrop-blur-md bg-slate-950/85 border border-emerald-500/20 overflow-hidden shadow-2xl transition-all duration-300 hover:border-emerald-500/50">
-              {/* Terminal header */}
-              <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5 bg-white/[0.02]">
-                <div className="flex items-center gap-1.5">
-                  <div className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
-                  <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
-                  <div className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
+            {/* Apple macOS Frosted Glass Terminal Window */}
+            <div className="apple-glass-card w-full max-w-[420px] rounded-2xl overflow-hidden shadow-2xl">
+              {/* macOS Window Titlebar */}
+              <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 bg-white/[0.03]">
+                <div className="flex items-center gap-2">
+                  <div className="h-3 w-3 rounded-full bg-[#ff5f56] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]" />
+                  <div className="h-3 w-3 rounded-full bg-[#ffbd2e] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]" />
+                  <div className="h-3 w-3 rounded-full bg-[#27c93f] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]" />
                   <span className="ml-2 text-[11px] font-mono text-zinc-400">
                     GET /api/v1/developer
                   </span>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-400">
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
                   <Terminal className="h-3 w-3" />
                   <span>200 OK</span>
                 </div>

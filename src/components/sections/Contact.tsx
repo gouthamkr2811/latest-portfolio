@@ -202,7 +202,7 @@ export function Contact() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => handleChange("name", e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                  className="w-full rounded-xl border border-white/15 bg-white/[0.04] backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-400 focus:bg-white/[0.08] focus:outline-none transition-all"
                   placeholder="Your name"
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
@@ -232,7 +232,7 @@ export function Contact() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleChange("email", e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                  className="w-full rounded-xl border border-white/15 bg-white/[0.04] backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-400 focus:bg-white/[0.08] focus:outline-none transition-all"
                   placeholder="you@example.com"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
@@ -262,7 +262,7 @@ export function Contact() {
                   type="text"
                   value={formData.subject}
                   onChange={(e) => handleChange("subject", e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+                  className="w-full rounded-xl border border-white/15 bg-white/[0.04] backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-400 focus:bg-white/[0.08] focus:outline-none transition-all"
                   placeholder="Project inquiry"
                   aria-invalid={!!errors.subject}
                   aria-describedby={
@@ -294,7 +294,7 @@ export function Contact() {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent resize-none"
+                  className="w-full rounded-xl border border-white/15 bg-white/[0.04] backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-400 focus:bg-white/[0.08] focus:outline-none transition-all resize-none"
                   placeholder="Tell me about your project..."
                   aria-invalid={!!errors.message}
                   aria-describedby={
@@ -315,7 +315,7 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-slate-950 transition-all hover:bg-accent-light hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+                className="apple-primary-btn w-full flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-slate-950 tracking-wide transition-all"
               >
                 <Send className="h-4 w-4" />
                 Send Message

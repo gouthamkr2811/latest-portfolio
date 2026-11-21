@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -16,6 +16,7 @@ export function GlowingCard({
   delay = 0,
 }: GlowingCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -42,12 +43,36 @@ export function GlowingCard({
     return () => ctx.revert();
   }, [delay]);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos(null);
+  };
+
   return (
     <div
       ref={cardRef}
-      className={`glow-border rounded-xl backdrop-blur-xl bg-slate-900/60 border border-emerald-500/15 p-6 transition-all duration-300 hover:border-emerald-400/40 hover:bg-slate-900/80 shadow-[0_4px_24px_rgba(0,0,0,0.35)] ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={`apple-glass-card relative overflow-hidden p-6 sm:p-7 ${className}`}
     >
-      {children}
+      {/* Dynamic Apple Specular Sheen on Cursor Movement */}
+      {mousePos && (
+        <div
+          className="pointer-events-none absolute inset-0 transition-opacity duration-300 opacity-100"
+          style={{
+            background: `radial-gradient(380px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 255, 255, 0.08), transparent 65%)`,
+          }}
+        />
+      )}
+      <div className="relative z-10">{children}</div>
     </div>
   );
 }

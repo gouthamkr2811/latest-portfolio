@@ -18,8 +18,9 @@ export function AnimatedBackground() {
   const orb1Ref = useRef<HTMLDivElement>(null);
   const orb2Ref = useRef<HTMLDivElement>(null);
   const orb3Ref = useRef<HTMLDivElement>(null);
+  const orb4Ref = useRef<HTMLDivElement>(null);
 
-  // GSAP animation for ambient aura orbs
+  // GSAP animation for Apple liquid glass ambient refraction lights
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -27,41 +28,58 @@ export function AnimatedBackground() {
     if (mediaQuery.matches) return;
 
     const ctx = gsap.context(() => {
+      // Orb 1: Emerald / Mint
       if (orb1Ref.current) {
         gsap.to(orb1Ref.current, {
-          x: "80px",
-          y: "-60px",
-          scale: 1.25,
-          duration: 9,
+          x: "110px",
+          y: "-80px",
+          scale: 1.3,
+          duration: 10,
           repeat: -1,
           yoyo: true,
           ease: "sine.inOut",
         });
       }
 
+      // Orb 2: Sapphire Azure
       if (orb2Ref.current) {
         gsap.to(orb2Ref.current, {
-          x: "-70px",
-          y: "80px",
-          scale: 1.18,
-          duration: 11,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: 1,
-        });
-      }
-
-      if (orb3Ref.current) {
-        gsap.to(orb3Ref.current, {
-          x: "60px",
-          y: "50px",
-          scale: 1.3,
+          x: "-100px",
+          y: "110px",
+          scale: 1.25,
           duration: 13,
           repeat: -1,
           yoyo: true,
           ease: "sine.inOut",
-          delay: 2,
+          delay: 1.5,
+        });
+      }
+
+      // Orb 3: Radiant Cyan
+      if (orb3Ref.current) {
+        gsap.to(orb3Ref.current, {
+          x: "90px",
+          y: "70px",
+          scale: 1.35,
+          duration: 15,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 2.5,
+        });
+      }
+
+      // Orb 4: VisionOS Violet glow
+      if (orb4Ref.current) {
+        gsap.to(orb4Ref.current, {
+          x: "-80px",
+          y: "-70px",
+          scale: 1.2,
+          duration: 12,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 0.8,
         });
       }
     });
@@ -82,29 +100,28 @@ export function AnimatedBackground() {
     let height = (canvas.height = window.innerHeight);
 
     const particles: Particle[] = [];
-    const particleCount = Math.min(Math.floor((width * height) / 18000), 55);
+    const particleCount = Math.min(Math.floor((width * height) / 20000), 48);
     const connectionDistance = 140;
 
     const colors = [
       "rgba(16, 185, 129, ", // emerald
       "rgba(6, 182, 212, ",  // cyan
-      "rgba(20, 184, 166, ", // teal
-      "rgba(56, 189, 248, ", // light cyan/sky
+      "rgba(59, 130, 246, ", // sapphire
+      "rgba(255, 255, 255, ", // crisp white specular
     ];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 1.8 + 0.8,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 1.6 + 0.7,
         color: colors[Math.floor(Math.random() * colors.length)],
-        baseAlpha: Math.random() * 0.5 + 0.3,
+        baseAlpha: Math.random() * 0.4 + 0.25,
       });
     }
 
-    // Mouse tracking for subtle interactive pull
     let mouseX = -1000;
     let mouseY = -1000;
 
@@ -131,15 +148,12 @@ export function AnimatedBackground() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Update & draw particles
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Move
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce walls
         if (p.x < 0) {
           p.x = 0;
           p.vx *= -1;
@@ -156,7 +170,6 @@ export function AnimatedBackground() {
           p.vy *= -1;
         }
 
-        // Mouse interaction
         const dxMouse = mouseX - p.x;
         const dyMouse = mouseY - p.y;
         const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
@@ -166,13 +179,11 @@ export function AnimatedBackground() {
           p.y -= (dyMouse / distMouse) * force * 1.2;
         }
 
-        // Draw particle dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${p.color}${p.baseAlpha})`;
         ctx.fill();
 
-        // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
@@ -180,12 +191,12 @@ export function AnimatedBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const alpha = (1 - dist / connectionDistance) * 0.22;
+            const alpha = (1 - dist / connectionDistance) * 0.18;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.lineWidth = 0.7;
             ctx.stroke();
           }
         }
@@ -206,27 +217,31 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* GSAP Animated Glowing Gradient Orbs */}
+      {/* Apple VisionOS Refractive Glass Gradient Orbs */}
       <div
         ref={orb1Ref}
-        className="absolute -top-32 left-1/4 w-[540px] h-[540px] rounded-full bg-emerald-500/15 blur-[140px] will-change-transform"
+        className="absolute -top-36 left-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/18 blur-[160px] will-change-transform"
       />
       <div
         ref={orb2Ref}
-        className="absolute top-1/2 -right-28 w-[580px] h-[580px] rounded-full bg-cyan-500/12 blur-[150px] will-change-transform"
+        className="absolute top-1/3 -right-24 w-[650px] h-[650px] rounded-full bg-blue-600/16 blur-[170px] will-change-transform"
       />
       <div
         ref={orb3Ref}
-        className="absolute -bottom-40 left-1/3 w-[620px] h-[620px] rounded-full bg-teal-500/10 blur-[160px] will-change-transform"
+        className="absolute -bottom-48 left-1/3 w-[700px] h-[700px] rounded-full bg-cyan-500/14 blur-[180px] will-change-transform"
+      />
+      <div
+        ref={orb4Ref}
+        className="absolute top-2/3 -left-32 w-[520px] h-[520px] rounded-full bg-purple-600/12 blur-[160px] will-change-transform"
       />
 
-      {/* Cyberpunk Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_60%,transparent_100%)] opacity-70" />
+      {/* Subtle Apple dot-mesh texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_35%,#000_65%,transparent_100%)] opacity-60" />
 
       {/* Canvas interactive node constellation */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-80"
+        className="absolute inset-0 w-full h-full opacity-70"
       />
     </div>
   );

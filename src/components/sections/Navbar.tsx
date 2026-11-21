@@ -8,47 +8,54 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[#050811]/80 border-b border-emerald-500/15">
+    <header className="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-5xl">
       <nav
-        className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6"
+        className="apple-glass-pill rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between shadow-[0_16px_36px_rgba(0,0,0,0.5),inset_0_1px_1.5px_rgba(255,255,255,0.35)]"
         aria-label="Main navigation"
       >
-        {/* Monogram */}
+        {/* Apple Monogram Brand */}
         <a
           href="#"
-          className="font-mono text-xl font-bold tracking-widest text-emerald-400 flex items-center gap-1.5"
+          className="font-mono text-sm sm:text-base font-bold tracking-wider text-white flex items-center gap-2 group transition-transform hover:scale-105"
           aria-label="Go to top"
         >
-          <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-          {profile.monogram}
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+          </span>
+          <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent font-bold">
+            {profile.monogram}
+          </span>
         </a>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-6">
+        {/* Desktop segmented glass links */}
+        <ul className="hidden md:flex items-center gap-1 bg-white/[0.04] p-1 rounded-full border border-white/10">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-zinc-400 transition-colors hover:text-emerald-400"
+                className="px-3.5 py-1.5 rounded-full text-xs font-medium text-zinc-300 transition-all duration-200 hover:text-white hover:bg-white/[0.08]"
               >
                 {link.label}
               </a>
             </li>
           ))}
-          <li>
-            <a
-              href="#contact"
-              className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-slate-950 transition-all hover:bg-accent-light hover:shadow-[0_0_16px_rgba(16,185,129,0.4)]"
-            >
-              Contact Me
-            </a>
-          </li>
         </ul>
+
+        {/* CTA Glass Button */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="#contact"
+            className="apple-primary-btn rounded-full px-5 py-2 text-xs font-semibold text-slate-950 tracking-wide transition-all"
+          >
+            Contact Me
+          </a>
+        </div>
 
         {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-zinc-400 hover:text-white"
+          className="md:hidden p-1.5 rounded-full text-zinc-300 hover:text-white hover:bg-white/10 transition-colors"
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
         >
@@ -56,26 +63,26 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile glass dropdown */}
       {isOpen && (
-        <div className="md:hidden border-t border-emerald-500/15 backdrop-blur-xl bg-[#050811]/95">
-          <ul className="flex flex-col gap-1 px-4 py-4">
+        <div className="mt-2.5 apple-glass-card rounded-2xl p-4 md:hidden shadow-2xl border border-white/20">
+          <ul className="flex flex-col gap-1.5">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-lg px-3 py-2 text-sm text-zinc-400 transition-colors hover:bg-emerald-500/10 hover:text-emerald-300"
+                  className="block rounded-xl px-4 py-2.5 text-sm text-zinc-300 transition-colors hover:bg-white/10 hover:text-white"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
-            <li>
+            <li className="pt-2">
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="block rounded-lg bg-accent px-3 py-2 text-center text-sm font-semibold text-slate-950 transition-colors hover:bg-accent-light"
+                className="apple-primary-btn block w-full rounded-xl py-2.5 text-center text-sm font-semibold text-slate-950 tracking-wide"
               >
                 Contact Me
               </a>
