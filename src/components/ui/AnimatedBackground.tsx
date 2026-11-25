@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 
 export function AnimatedBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const LOOP_START_TIME = 1.833;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -17,41 +16,21 @@ export function AnimatedBackground() {
       return;
     }
 
-    const video = videoRef.current;
-    if (video) {
-      const handleTimeUpdate = () => {
-        // When video reaches near the end, loop back to the waving section
-        if (video.duration && video.currentTime >= video.duration - 0.15) {
-          video.currentTime = LOOP_START_TIME;
-          video.play().catch(() => {});
-        }
-      };
-
-      const handleEnded = () => {
-        // Fallback loop point
-        video.currentTime = LOOP_START_TIME;
-        video.play().catch(() => {});
-      };
-
-      video.addEventListener("timeupdate", handleTimeUpdate);
-      video.addEventListener("ended", handleEnded);
-
-      // Start playing
-      video.play().catch(() => {});
-
-      return () => {
-        video.removeEventListener("timeupdate", handleTimeUpdate);
-        video.removeEventListener("ended", handleEnded);
-      };
+    // Ensure video plays smoothly across all modern browsers
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Fallback if browser requires user gesture
+      });
     }
   }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-black">
-      {/* Video Wallpaper: Blooms once on open, then loops only the gentle flower waves */}
+      {/* Original Video Wallpaper (https://pin.it/6TIoMj3Q8) */}
       <video
         ref={videoRef}
         autoPlay
+        loop
         muted
         playsInline
         poster="/videos/background-poster.jpg"
