@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Briefcase, MapPin, Calendar, CheckCircle2 } from "lucide-react";
+import { Briefcase, MapPin, Calendar, CheckCircle2, ChevronRight, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { experienceEntries } from "@/data/portfolio";
 
@@ -28,7 +28,7 @@ export function Experience() {
             once: true,
           },
           opacity: 0,
-          x: -32,
+          x: -30,
           duration: 0.65,
           delay: index * 0.12,
           ease: "power2.out",
@@ -47,13 +47,13 @@ export function Experience() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Career Journey"
-          subtitle="Engineering milestones, architectural ownership, and key contributions."
+          title="Career Journey & Impact"
+          subtitle="Key engineering leadership roles, architectural milestones, and production deliverables."
         />
 
-        <div className="relative mx-auto max-w-4xl">
-          {/* Timeline central glowing line */}
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-400/80 via-emerald-400/30 to-transparent sm:left-8" />
+        <div className="mt-12 relative mx-auto max-w-4xl">
+          {/* Timeline central glowing conduit */}
+          <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-400/90 via-emerald-400/40 to-transparent sm:left-8" />
 
           {experienceEntries.map((entry, i) => (
             <div
@@ -61,44 +61,45 @@ export function Experience() {
               ref={(el) => {
                 if (el) itemsRef.current[i] = el;
               }}
-              className="relative pl-12 pb-14 last:pb-0 sm:pl-20"
+              className="relative pl-12 pb-16 last:pb-0 sm:pl-20"
             >
-              {/* Timeline glowing pulsing node */}
-              <div className="absolute left-2.5 top-2 h-4 w-4 rounded-full border-2 border-emerald-400 bg-black shadow-[0_0_16px_rgba(16,185,129,0.9)] sm:left-6.5 flex items-center justify-center">
+              {/* Timeline glowing pulsing beacon node */}
+              <div className="absolute left-2.5 top-2 h-4 w-4 rounded-full border-2 border-emerald-400 bg-black shadow-[0_0_16px_rgba(16,185,129,0.95)] sm:left-6.5 flex items-center justify-center">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
               </div>
 
               {/* Apple Glass Experience Card */}
-              <div className="apple-glass-card rounded-[1.8rem] p-7 sm:p-8 transition-all duration-300">
+              <div className="apple-glass-card rounded-[2rem] p-7 sm:p-9 transition-all duration-300 border border-white/12 hover:border-emerald-400/30">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-5">
                   <div>
-                    <h3 className="text-xl font-bold text-white flex items-center gap-2.5">
-                      <div className="rounded-lg bg-emerald-500/15 p-2 text-emerald-400">
-                        <Briefcase className="h-4 w-4" />
+                    <h3 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
+                      <div className="rounded-xl bg-emerald-500/15 border border-emerald-400/30 p-2 text-emerald-400">
+                        <Briefcase className="h-5 w-5" />
                       </div>
                       {entry.role}
                     </h3>
-                    <div className="mt-2 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-zinc-400">
-                      <span className="inline-flex items-center gap-1.5 text-zinc-300">
+
+                    <div className="mt-2.5 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-zinc-400">
+                      <span className="inline-flex items-center gap-1.5 text-zinc-300 font-mono">
                         <MapPin className="h-3.5 w-3.5 text-emerald-400" />
                         {entry.location}
                       </span>
                     </div>
                   </div>
 
-                  <span className="apple-glass-pill rounded-full px-4 py-1.5 text-xs font-mono text-emerald-300 self-start sm:self-auto flex items-center gap-1.5">
+                  <span className="apple-glass-pill rounded-full px-4 py-1.5 text-xs font-mono text-emerald-300 self-start sm:self-auto flex items-center gap-1.5 shadow-sm">
                     <Calendar className="h-3.5 w-3.5" />
                     {entry.period}
                   </span>
                 </div>
 
-                <ul className="mt-6 space-y-3">
+                <ul className="mt-6 space-y-3.5">
                   {entry.bullets.map((bullet) => (
                     <li
                       key={bullet}
                       className="flex items-start gap-3 text-sm text-zinc-300 leading-relaxed"
                     >
-                      <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>{bullet}</span>
                     </li>
                   ))}
