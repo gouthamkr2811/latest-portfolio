@@ -17,19 +17,12 @@ import {
   Zap,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { TechBadge } from "@/components/ui/TechBadge";
 import { projects } from "@/data/portfolio";
 
 const projectFlows = [
   "Client -> Cloudflare CDN -> Django REST Auth -> Celery -> PostgreSQL / Typesense",
   "Web/Mobile -> API Gateway -> Booking Engine -> Razorpay/PhonePe Webhooks -> DB",
   "Hospital Staff Portal -> Auth Gateway -> Patient Records Core -> S3 Cloud Vault",
-];
-
-const projectMetrics = [
-  { label: "Architecture", val: "Microservices" },
-  { label: "Search SLA", val: "<15ms" },
-  { label: "Payment Rails", val: "4 Gateways" },
 ];
 
 export function Projects() {
@@ -87,18 +80,18 @@ export function Projects() {
               ref={(el) => {
                 if (el) cardRefs.current[i] = el;
               }}
-              className="apple-glass-card rounded-[2rem] flex flex-col overflow-hidden transition-all duration-300 border border-white/12 hover:border-emerald-400/35"
+              className="apple-glass-card rounded-[2rem] flex flex-col overflow-hidden transition-all duration-300 border border-violet-500/25 hover:border-cyan-400/50"
             >
               {/* Card Header & Content */}
               <div className="p-7 sm:p-8 flex-1 flex flex-col justify-between">
                 <div>
                   {/* Top Badge & Metric */}
                   <div className="flex items-start justify-between gap-3 mb-5">
-                    <div className="rounded-xl bg-emerald-500/15 border border-emerald-400/30 p-2.5 shadow-sm">
-                      <Layers className="h-5 w-5 text-emerald-400" />
+                    <div className="rounded-xl bg-violet-500/20 border border-violet-400/30 p-2.5 shadow-sm">
+                      <Layers className="h-5 w-5 text-cyan-400" />
                     </div>
-                    <span className="apple-glass-pill rounded-full px-3 py-1 text-[11px] font-mono text-emerald-300 flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="apple-glass-pill rounded-full px-3 py-1 text-[11px] font-mono text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
                       Production Ready
                     </span>
                   </div>
@@ -106,7 +99,7 @@ export function Projects() {
                   <h3 className="text-2xl font-bold text-white tracking-tight">
                     {project.title}
                   </h3>
-                  <p className="text-xs font-mono text-emerald-400 mt-1 font-semibold">
+                  <p className="text-xs font-mono text-violet-300 mt-1 font-semibold">
                     {project.subtitle}
                   </p>
 
@@ -115,9 +108,9 @@ export function Projects() {
                   </p>
 
                   {/* Architecture Flow Micro-badge */}
-                  <div className="mt-5 p-3 rounded-xl bg-black/50 border border-white/10 font-mono text-[11px] text-zinc-400">
-                    <p className="text-emerald-400 text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
-                      <Zap className="h-3 w-3" />
+                  <div className="mt-5 p-3 rounded-xl bg-black/60 border border-violet-500/20 font-mono text-[11px] text-zinc-400">
+                    <p className="text-cyan-400 text-[10px] uppercase font-bold tracking-wider mb-1 flex items-center gap-1">
+                      <Zap className="h-3 w-3 text-cyan-400" />
                       Pipeline Topology
                     </p>
                     <p className="truncate text-zinc-300">
@@ -127,14 +120,14 @@ export function Projects() {
                 </div>
 
                 {/* Expandable Technical Deep-Dive */}
-                <div className="mt-6 pt-5 border-t border-white/10">
+                <div className="mt-6 pt-5 border-t border-violet-500/20">
                   <button
                     onClick={() => toggleExpand(i)}
                     aria-expanded={expandedIndex === i}
-                    className="w-full flex items-center justify-between text-xs font-mono text-emerald-300 hover:text-emerald-200 transition-colors py-1.5"
+                    className="w-full flex items-center justify-between text-xs font-mono text-cyan-300 hover:text-cyan-200 transition-colors py-1.5"
                   >
                     <span className="flex items-center gap-1.5 font-semibold">
-                      <Terminal className="h-3.5 w-3.5 text-emerald-400" />
+                      <Terminal className="h-3.5 w-3.5 text-violet-400" />
                       Architecture Highlights ({project.highlights.length})
                     </span>
                     <ChevronDown
@@ -145,13 +138,13 @@ export function Projects() {
                   </button>
 
                   {expandedIndex === i && (
-                    <div className="mt-3 space-y-2 rounded-xl bg-black/40 p-4 border border-white/5">
+                    <div className="mt-3 space-y-2 rounded-xl bg-black/50 p-4 border border-violet-500/20">
                       {project.highlights.map((highlight, hIndex) => (
                         <div
                           key={hIndex}
                           className="flex items-start gap-2 text-xs text-zinc-300 leading-relaxed"
                         >
-                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-400 shrink-0" />
                           <span>{highlight}</span>
                         </div>
                       ))}
@@ -161,12 +154,12 @@ export function Projects() {
               </div>
 
               {/* Card Footer: Tech Stack Chips */}
-              <div className="border-t border-white/10 bg-white/[0.02] p-5 sm:p-6">
+              <div className="border-t border-violet-500/20 bg-white/[0.02] p-5 sm:p-6">
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="apple-glass-pill px-2.5 py-1 rounded-lg text-[11px] font-mono text-zinc-300 border border-white/10"
+                      className="apple-glass-pill px-2.5 py-1 rounded-lg text-[11px] font-mono text-zinc-300 border border-violet-500/25"
                     >
                       {tag}
                     </span>

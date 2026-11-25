@@ -49,56 +49,56 @@ export function ArchitectureSection() {
           />
         </div>
 
-        {/* Live Metrics Header Bar */}
+        {/* Live Metrics Header Bar in Violet & Cyan */}
         <div className="arch-fade mt-2 mb-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="apple-glass-pill rounded-2xl p-4 text-center">
+          <div className="apple-glass-pill rounded-2xl p-4 text-center border border-violet-500/25">
             <div className="flex items-center justify-center gap-1.5 text-xs font-mono text-zinc-400">
-              <Activity className="h-3.5 w-3.5 text-emerald-400" />
+              <Activity className="h-3.5 w-3.5 text-cyan-400" />
               Cluster Uptime
             </div>
             <p className="mt-1 text-xl sm:text-2xl font-bold font-mono text-white">
               99.98%
             </p>
-            <p className="text-[11px] font-mono text-emerald-400 mt-0.5">
+            <p className="text-[11px] font-mono text-cyan-400 mt-0.5">
               Production SLA
             </p>
           </div>
 
-          <div className="apple-glass-pill rounded-2xl p-4 text-center">
+          <div className="apple-glass-pill rounded-2xl p-4 text-center border border-violet-500/25">
             <div className="flex items-center justify-center gap-1.5 text-xs font-mono text-zinc-400">
-              <Cpu className="h-3.5 w-3.5 text-emerald-300" />
+              <Cpu className="h-3.5 w-3.5 text-violet-400" />
               API Throughput
             </div>
             <p className="mt-1 text-xl sm:text-2xl font-bold font-mono text-white">
               1,800+
             </p>
-            <p className="text-[11px] font-mono text-emerald-300 mt-0.5">
+            <p className="text-[11px] font-mono text-violet-300 mt-0.5">
               req / sec capacity
             </p>
           </div>
 
-          <div className="apple-glass-pill rounded-2xl p-4 text-center">
+          <div className="apple-glass-pill rounded-2xl p-4 text-center border border-violet-500/25">
             <div className="flex items-center justify-center gap-1.5 text-xs font-mono text-zinc-400">
-              <Network className="h-3.5 w-3.5 text-teal-300" />
+              <Network className="h-3.5 w-3.5 text-cyan-300" />
               Search Retrieval
             </div>
             <p className="mt-1 text-xl sm:text-2xl font-bold font-mono text-white">
               &lt; 15ms
             </p>
-            <p className="text-[11px] font-mono text-teal-300 mt-0.5">
+            <p className="text-[11px] font-mono text-cyan-300 mt-0.5">
               Elasticsearch / Typesense
             </p>
           </div>
 
-          <div className="apple-glass-pill rounded-2xl p-4 text-center">
+          <div className="apple-glass-pill rounded-2xl p-4 text-center border border-violet-500/25">
             <div className="flex items-center justify-center gap-1.5 text-xs font-mono text-zinc-400">
-              <ShieldCheck className="h-3.5 w-3.5 text-green-300" />
+              <ShieldCheck className="h-3.5 w-3.5 text-purple-400" />
               Fintech Reliability
             </div>
             <p className="mt-1 text-xl sm:text-2xl font-bold font-mono text-white">
               100%
             </p>
-            <p className="text-[11px] font-mono text-green-300 mt-0.5">
+            <p className="text-[11px] font-mono text-purple-300 mt-0.5">
               Idempotent Webhooks
             </p>
           </div>

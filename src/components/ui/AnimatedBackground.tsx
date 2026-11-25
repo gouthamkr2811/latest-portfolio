@@ -30,20 +30,22 @@ export function AnimatedBackground() {
       vx: number;
       vy: number;
       size: number;
+      color: "violet" | "cyan";
       alpha: number;
       baseAlpha: number;
     }> = [];
 
-    const particleCount = Math.min(65, Math.floor((width * height) / 22000));
+    const particleCount = Math.min(70, Math.floor((width * height) / 20000));
 
     for (let i = 0; i < particleCount; i++) {
-      const baseAlpha = Math.random() * 0.4 + 0.15;
+      const baseAlpha = Math.random() * 0.45 + 0.15;
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        size: Math.random() * 1.8 + 0.8,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        size: Math.random() * 2 + 0.8,
+        color: Math.random() > 0.45 ? "violet" : "cyan",
         alpha: baseAlpha,
         baseAlpha,
       });
@@ -61,8 +63,8 @@ export function AnimatedBackground() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Render subtle connections between nearby particles
-      ctx.lineWidth = 0.75;
+      // Render connections between nearby particles with gradient
+      ctx.lineWidth = 0.8;
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
         for (let j = i + 1; j < particles.length; j++) {
@@ -71,9 +73,22 @@ export function AnimatedBackground() {
           const dy = p1.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.12;
-            ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
+          if (dist < 135) {
+            const alpha = (1 - dist / 135) * 0.14;
+            const grad = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
+            grad.addColorStop(
+              0,
+              p1.color === "violet"
+                ? `rgba(139, 92, 246, ${alpha})`
+                : `rgba(6, 182, 212, ${alpha})`
+            );
+            grad.addColorStop(
+              1,
+              p2.color === "violet"
+                ? `rgba(139, 92, 246, ${alpha})`
+                : `rgba(34, 211, 238, ${alpha})`
+            );
+            ctx.strokeStyle = grad;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -96,12 +111,17 @@ export function AnimatedBackground() {
         const dx = mouseX - p.x;
         const dy = mouseY - p.y;
         const distToMouse = Math.sqrt(dx * dx + dy * dy);
-        const mouseFactor = Math.max(0, 1 - distToMouse / 250);
-        const currentAlpha = Math.min(1, p.baseAlpha + mouseFactor * 0.6);
+        const mouseFactor = Math.max(0, 1 - distToMouse / 240);
+        const currentAlpha = Math.min(1, p.baseAlpha + mouseFactor * 0.65);
 
-        ctx.fillStyle = `rgba(52, 211, 153, ${currentAlpha})`;
+        if (p.color === "violet") {
+          ctx.fillStyle = `rgba(168, 85, 247, ${currentAlpha})`;
+        } else {
+          ctx.fillStyle = `rgba(34, 211, 238, ${currentAlpha})`;
+        }
+
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size + mouseFactor * 1.2, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.size + mouseFactor * 1.3, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -118,41 +138,42 @@ export function AnimatedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#06070a]">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#060814]">
       {/* Precision Geometric Grid Mesh */}
       <div
-        className="absolute inset-0 opacity-[0.18]"
+        className="absolute inset-0 opacity-[0.2]"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, rgba(139, 92, 246, 0.12) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(139, 92, 246, 0.12) 1px, transparent 1px)`,
           backgroundSize: "64px 64px",
           maskImage:
-            "radial-gradient(ellipse 80% 60% at 50% 25%, black 40%, transparent 100%)",
+            "radial-gradient(ellipse 85% 65% at 50% 25%, black 40%, transparent 100%)",
           WebkitMaskImage:
-            "radial-gradient(ellipse 80% 60% at 50% 25%, black 40%, transparent 100%)",
+            "radial-gradient(ellipse 85% 65% at 50% 25%, black 40%, transparent 100%)",
         }}
       />
 
-      {/* Cyber Dot Matrix Matrix Accent */}
+      {/* Cyber Dot Matrix Matrix Accent in Cyan */}
       <div
-        className="absolute inset-0 opacity-[0.14]"
+        className="absolute inset-0 opacity-[0.15]"
         style={{
           backgroundImage:
-            "radial-gradient(rgba(16, 185, 129, 0.35) 1px, transparent 1px)",
+            "radial-gradient(rgba(34, 211, 238, 0.35) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
 
-      {/* Atmospheric Luminous Spotlights */}
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[850px] h-[550px] rounded-full bg-emerald-500/12 blur-[170px]" />
-      <div className="absolute top-[40%] right-[-5%] w-[600px] h-[600px] rounded-full bg-teal-500/10 blur-[190px]" />
-      <div className="absolute top-[75%] left-[-10%] w-[700px] h-[700px] rounded-full bg-emerald-600/8 blur-[200px]" />
+      {/* Atmospheric Luminous Spotlights: Electric Violet & Neon Cyan */}
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[900px] h-[550px] rounded-full bg-violet-600/18 blur-[180px]" />
+      <div className="absolute top-[35%] right-[-8%] w-[650px] h-[650px] rounded-full bg-cyan-500/14 blur-[190px]" />
+      <div className="absolute top-[70%] left-[-10%] w-[750px] h-[750px] rounded-full bg-purple-600/14 blur-[210px]" />
+      <div className="absolute top-[85%] right-[10%] w-[500px] h-[500px] rounded-full bg-indigo-500/12 blur-[170px]" />
 
       {/* Interactive Canvas Mesh */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* Subtle Noise Texture for high-end cinematic feel */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#06070a]/40 to-[#06070a] pointer-events-none" />
+      {/* Subtle Bottom Fade to deep obsidian */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#060814]/30 to-[#060814] pointer-events-none" />
     </div>
   );
 }

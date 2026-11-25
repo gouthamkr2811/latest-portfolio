@@ -14,13 +14,13 @@ html {
 }
 
 body {
-  background-color: #03050a;
+  background-color: #060814;
   color: #f1f5f9;
   overflow-x: hidden;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Apple-style translucent scrollbar */
+/* Translucent Cyber-Violet Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -30,106 +30,119 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(139, 92, 246, 0.25);
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(34, 211, 238, 0.45);
   background-clip: content-box;
 }
 
-/* Apple VisionOS / macOS Glass Utility Classes */
+/* ─── Modern Developer Bento & Glass (Linear / Vercel style) ─── */
 
 .apple-glass {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(13, 16, 32, 0.65);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.22);
   box-shadow: 
-    0 24px 48px -12px rgba(0, 0, 0, 0.65),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    0 24px 48px -12px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 0 20px 0 rgba(139, 92, 246, 0.05);
 }
 
 .apple-glass-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(11, 14, 28, 0.72);
   backdrop-filter: blur(32px) saturate(200%);
   -webkit-backdrop-filter: blur(32px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.25rem;
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  border-radius: 1.5rem;
   box-shadow: 
-    0 20px 40px -15px rgba(0, 0, 0, 0.6),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.24),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    0 20px 40px -15px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 0 24px 0 rgba(6, 182, 212, 0.04);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-glass-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(15, 19, 38, 0.82);
+  border-color: rgba(34, 211, 238, 0.4);
   box-shadow: 
-    0 28px 56px -12px rgba(0, 0, 0, 0.7),
-    0 0 32px rgba(16, 185, 129, 0.12),
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    0 28px 56px -12px rgba(0, 0, 0, 0.8),
+    0 0 32px rgba(139, 92, 246, 0.2),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 28px 0 rgba(34, 211, 238, 0.08);
   transform: translateY(-2px);
 }
 
 .apple-glass-pill {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(139, 92, 246, 0.08);
   backdrop-filter: blur(24px) saturate(190%);
   -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(139, 92, 246, 0.28);
   box-shadow: 
     0 12px 28px -8px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .apple-glass-button {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(139, 92, 246, 0.12) 100%);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   box-shadow: 
-    0 8px 20px -6px rgba(0, 0, 0, 0.4),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+    0 8px 20px -6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-glass-button:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.1) 100%);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(6, 182, 212, 0.2) 100%);
+  border-color: rgba(34, 211, 238, 0.5);
   box-shadow: 
-    0 12px 28px -6px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4);
+    0 12px 28px -6px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(34, 211, 238, 0.25),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35);
   transform: translateY(-1px);
 }
 
-/* Apple Primary Accent Button with inner specular ring */
+/* Electric Violet & Neon Cyan Primary Button */
 .apple-primary-btn {
-  background: linear-gradient(180deg, #10b981 0%, #059669 100%);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 
-    0 10px 28px -6px rgba(16, 185, 129, 0.45),
+    0 10px 30px -4px rgba(139, 92, 246, 0.5),
+    0 0 20px rgba(6, 182, 212, 0.3),
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-primary-btn:hover {
-  background: linear-gradient(180deg, #34d399 0%, #10b981 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #22d3ee 100%);
   box-shadow: 
-    0 14px 34px -6px rgba(16, 185, 129, 0.6),
-    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.6);
-  transform: translateY(-1.5px);
+    0 14px 36px -4px rgba(139, 92, 246, 0.65),
+    0 0 28px rgba(34, 211, 238, 0.45),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
 }
 
-/* Focus ring utility */
-*:focus-visible {
-  outline: 2px solid #10b981;
-  outline-offset: 3px;
-  border-radius: 8px;
+/* Cyber Glow Badge */
+.cyber-badge {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #c4b5fd;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.15);
+}
+
+/* Neon Text Gradient */
+.neon-gradient-text {
+  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 35%, #22d3ee 70%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

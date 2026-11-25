@@ -2,16 +2,14 @@
 
 import { Server, Search, Monitor, Cloud, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GlowingCard } from "@/components/ui/GlowingCard";
-import { TechBadge } from "@/components/ui/TechBadge";
 import { techCategories } from "@/data/portfolio";
 import type { ReactNode } from "react";
 
 const categoryIcons: ReactNode[] = [
-  <Server key="server" className="h-5 w-5 text-emerald-400" />,
-  <Search key="search" className="h-5 w-5 text-emerald-400" />,
-  <Monitor key="monitor" className="h-5 w-5 text-emerald-400" />,
-  <Cloud key="cloud" className="h-5 w-5 text-emerald-400" />,
+  <Server key="server" className="h-5 w-5 text-cyan-400" />,
+  <Search key="search" className="h-5 w-5 text-violet-400" />,
+  <Monitor key="monitor" className="h-5 w-5 text-cyan-400" />,
+  <Cloud key="cloud" className="h-5 w-5 text-purple-400" />,
 ];
 
 const categorySubtitles = [
@@ -23,19 +21,22 @@ const categorySubtitles = [
 
 export function TechStack() {
   return (
-    <section id="skills" className="py-24 sm:py-32">
+    <section id="skills" className="py-24 sm:py-32 relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          title="Technical Stack"
+          title="Technical Stack & Architecture"
           subtitle="Battle-tested technologies and tools I architect with every day."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {techCategories.map((category, i) => (
-            <GlowingCard key={category.title} delay={i * 0.1} className="p-7">
-              <div className="flex items-start justify-between gap-3 mb-4">
+            <div
+              key={category.title}
+              className="apple-glass-card rounded-[1.8rem] p-7 sm:p-8 border border-violet-500/25 transition-all duration-300"
+            >
+              <div className="flex items-start justify-between gap-3 mb-5">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-xl bg-emerald-500/15 border border-emerald-400/30 p-2.5 shadow-sm">
+                  <div className="rounded-xl bg-violet-500/15 border border-violet-400/30 p-2.5 shadow-sm">
                     {categoryIcons[i]}
                   </div>
                   <div>
@@ -47,17 +48,22 @@ export function TechStack() {
                     </p>
                   </div>
                 </div>
-                <span className="apple-glass-pill rounded-full px-2.5 py-1 text-[10px] font-mono text-emerald-300">
+                <span className="apple-glass-pill rounded-full px-3 py-1 text-[11px] font-mono text-cyan-300 border border-cyan-500/30">
                   {category.items.length} tools
                 </span>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-2">
                 {category.items.map((item) => (
-                  <TechBadge key={item} label={item} />
+                  <span
+                    key={item}
+                    className="apple-glass-pill px-3 py-1.5 rounded-xl text-xs font-mono text-zinc-200 border border-violet-500/20 hover:border-cyan-400/50 hover:text-cyan-300 hover:scale-105 transition-all cursor-default"
+                  >
+                    {item}
+                  </span>
                 ))}
               </div>
-            </GlowingCard>
+            </div>
           ))}
         </div>
       </div>

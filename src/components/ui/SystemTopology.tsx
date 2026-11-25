@@ -100,7 +100,7 @@ export function SystemTopology() {
     if (pulseRef.current) {
       gsap.to(pulseRef.current, {
         x: "100%",
-        duration: 3.5,
+        duration: 3.2,
         repeat: -1,
         ease: "power1.inOut",
       });
@@ -110,17 +110,17 @@ export function SystemTopology() {
   return (
     <div
       ref={containerRef}
-      className="apple-glass-card rounded-[2.2rem] p-5 sm:p-7 relative overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.45)] w-full"
+      className="apple-glass-card rounded-[2.2rem] p-5 sm:p-7 relative overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.85)] border border-violet-500/25 w-full"
     >
       {/* Topology Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-violet-500/20 pb-4 mb-6">
         <div>
           <div className="flex items-center gap-2">
             <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-80" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400" />
             </span>
-            <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold">
+            <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold">
               Live Architecture Topology
             </span>
           </div>
@@ -130,11 +130,11 @@ export function SystemTopology() {
         </div>
 
         <div className="flex items-center gap-2 text-xs font-mono">
-          <span className="apple-glass-pill rounded-full px-3 py-1 text-emerald-300 flex items-center gap-1.5">
-            <Activity className="h-3 w-3 text-emerald-400" />
+          <span className="apple-glass-pill rounded-full px-3 py-1 text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
+            <Activity className="h-3 w-3 text-cyan-400" />
             Avg Latency: 9.8ms
           </span>
-          <span className="apple-glass-pill rounded-full px-3 py-1 text-zinc-300">
+          <span className="apple-glass-pill rounded-full px-3 py-1 text-violet-300 border border-violet-500/30">
             5 Services Healthy
           </span>
         </div>
@@ -142,11 +142,11 @@ export function SystemTopology() {
 
       {/* Interactive Microservices Node Chain */}
       <div className="relative mb-6">
-        {/* Animated Traffic Conduit Line */}
+        {/* Animated Traffic Conduit Line: Cyan to Violet */}
         <div className="hidden lg:block absolute top-1/2 left-4 right-4 -translate-y-1/2 h-[2px] bg-white/10 overflow-hidden">
           <div
             ref={pulseRef}
-            className="w-32 h-full bg-gradient-to-r from-transparent via-emerald-400 to-transparent -translate-x-full"
+            className="w-40 h-full bg-gradient-to-r from-transparent via-cyan-400 to-violet-500 -translate-x-full"
           />
         </div>
 
@@ -161,21 +161,21 @@ export function SystemTopology() {
                 onClick={() => setSelectedNode(node)}
                 className={`text-left rounded-2xl p-3.5 transition-all duration-200 border ${
                   isSelected
-                    ? "bg-emerald-500/15 border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)] scale-[1.02]"
-                    : "bg-white/[0.03] border-white/10 hover:border-white/20 hover:bg-white/[0.06]"
+                    ? "bg-violet-600/20 border-cyan-400 shadow-[0_0_24px_rgba(6,182,212,0.35)] scale-[1.02]"
+                    : "bg-white/[0.03] border-white/10 hover:border-violet-400/40 hover:bg-white/[0.06]"
                 }`}
               >
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div
                     className={`rounded-lg p-2 ${
                       isSelected
-                        ? "bg-emerald-400 text-slate-950 font-bold"
-                        : "bg-white/10 text-emerald-400"
+                        ? "bg-gradient-to-r from-violet-500 to-cyan-500 text-white font-bold"
+                        : "bg-white/10 text-cyan-400"
                     }`}
                   >
                     <Icon className="h-4 w-4" />
                   </div>
-                  <span className="text-[10px] font-mono text-emerald-400 font-semibold">
+                  <span className="text-[10px] font-mono text-cyan-400 font-semibold">
                     {node.latency}
                   </span>
                 </div>
@@ -193,17 +193,17 @@ export function SystemTopology() {
       </div>
 
       {/* Selected Service Detail Panel */}
-      <div className="rounded-2xl bg-black/60 border border-white/10 p-4 sm:p-5">
+      <div className="rounded-2xl bg-black/60 border border-violet-500/20 p-4 sm:p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-3 mb-3">
           <div className="flex items-center gap-2.5">
-            <div className="rounded-lg bg-emerald-500/20 p-2 text-emerald-400">
+            <div className="rounded-lg bg-violet-500/20 p-2 text-cyan-400 border border-violet-500/30">
               <selectedNode.icon className="h-4 w-4" />
             </div>
             <div>
               <h4 className="font-bold text-sm text-white">
                 {selectedNode.name}
               </h4>
-              <p className="text-xs font-mono text-emerald-300">
+              <p className="text-xs font-mono text-cyan-300">
                 {selectedNode.category}
               </p>
             </div>
@@ -214,7 +214,7 @@ export function SystemTopology() {
               Throughput: <span className="text-white font-semibold">{selectedNode.throughput}</span>
             </span>
             <span className="text-zinc-400">
-              Latency: <span className="text-emerald-400 font-semibold">{selectedNode.latency}</span>
+              Latency: <span className="text-cyan-400 font-semibold">{selectedNode.latency}</span>
             </span>
           </div>
         </div>
@@ -229,7 +229,7 @@ export function SystemTopology() {
           {selectedNode.tech.map((t) => (
             <span
               key={t}
-              className="apple-glass-pill rounded-full px-2.5 py-0.5 text-[10px] font-mono text-emerald-300"
+              className="apple-glass-pill rounded-full px-2.5 py-0.5 text-[10px] font-mono text-cyan-300 border border-violet-500/30"
             >
               {t}
             </span>

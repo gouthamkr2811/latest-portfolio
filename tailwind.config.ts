@@ -9,18 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#050811",
+        background: "#060814",
         surface: {
-          DEFAULT: "rgba(12, 19, 31, 0.7)",
-          card: "rgba(10, 16, 28, 0.75)",
-          border: "rgba(16, 185, 129, 0.15)",
+          DEFAULT: "rgba(13, 16, 32, 0.7)",
+          card: "rgba(11, 14, 28, 0.75)",
+          border: "rgba(139, 92, 246, 0.2)",
         },
         accent: {
-          DEFAULT: "#10b981", // Electric Emerald
-          dark: "#059669",
-          light: "#34d399",
-          cyan: "#06b6d4",
-          teal: "#14b8a6",
+          DEFAULT: "#8b5cf6", // Electric Violet
+          violet: "#8b5cf6",
+          purple: "#a855f7",
+          cyan: "#06b6d4",   // Neon Cyan
+          neon: "#22d3ee",
+          indigo: "#6366f1",
         },
       },
       fontFamily: {

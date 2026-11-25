@@ -2,7 +2,6 @@
 
 import { Award, ExternalLink, CheckCircle } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GlowingCard } from "@/components/ui/GlowingCard";
 import { certifications } from "@/data/portfolio";
 
 export function Certifications() {
@@ -14,19 +13,22 @@ export function Certifications() {
           subtitle="Industry-verified professional engineering certifications."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          {certifications.map((cert, i) => (
-            <GlowingCard key={cert.title} delay={i * 0.1} className="p-7">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          {certifications.map((cert) => (
+            <div
+              key={cert.title}
+              className="apple-glass-card rounded-[1.8rem] p-7 sm:p-8 border border-violet-500/25 transition-all duration-300"
+            >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 p-3.5 shadow-sm">
-                  <Award className="h-6 w-6 text-emerald-400" />
+                <div className="flex-shrink-0 rounded-2xl bg-violet-500/20 border border-violet-400/30 p-3.5 shadow-sm">
+                  <Award className="h-6 w-6 text-cyan-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-300">
-                    <CheckCircle className="h-3.5 w-3.5 text-emerald-400" />
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-cyan-300">
+                    <CheckCircle className="h-3.5 w-3.5 text-cyan-400" />
                     <span>Verified Credential</span>
                   </div>
-                  <h3 className="font-bold text-white text-base sm:text-lg leading-snug mt-1">
+                  <h3 className="font-bold text-white text-base sm:text-lg leading-snug mt-1.5">
                     {cert.title}
                   </h3>
                   <p className="text-xs text-zinc-400 font-mono mt-1">
@@ -36,14 +38,14 @@ export function Certifications() {
                     href={cert.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 text-xs font-mono font-semibold text-emerald-400 hover:text-emerald-300 transition-colors apple-glass-pill rounded-full px-4 py-1.5"
+                    className="mt-4 inline-flex items-center gap-2 text-xs font-mono font-semibold text-cyan-300 hover:text-cyan-200 transition-colors apple-glass-pill rounded-full px-4 py-1.5 border border-violet-500/30"
                   >
                     <span>View Credential</span>
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
               </div>
-            </GlowingCard>
+            </div>
           ))}
         </div>
       </div>

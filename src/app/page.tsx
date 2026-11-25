@@ -14,7 +14,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#06070a] text-zinc-100 selection:bg-emerald-500/30 selection:text-white">
+    <div className="relative min-h-screen bg-[#060814] text-zinc-100 selection:bg-violet-600/30 selection:text-cyan-200">
       <AnimatedBackground />
       <Navbar />
       <main className="relative z-10">

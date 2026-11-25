@@ -11,7 +11,6 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GlowingCard } from "@/components/ui/GlowingCard";
 import { profile } from "@/data/portfolio";
 
 interface FormData {
@@ -137,9 +136,9 @@ export function Contact() {
           subtitle="Have a backend architecture, microservices project, or full-stack opportunity in mind?"
         />
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Contact info */}
-          <GlowingCard className="p-7 sm:p-8 flex flex-col justify-between">
+        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          {/* Contact info card */}
+          <div className="apple-glass-card rounded-[2rem] p-7 sm:p-8 flex flex-col justify-between border border-violet-500/25">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">
                 Contact Information
@@ -151,9 +150,9 @@ export function Contact() {
                 {contactInfo.map((item) => {
                   const Icon = item.icon;
                   const content = (
-                    <div className="flex items-start gap-4 p-3 rounded-2xl apple-glass-pill transition-all duration-200 hover:border-emerald-400/40">
-                      <div className="flex-shrink-0 rounded-xl bg-emerald-500/15 border border-emerald-400/30 p-2.5">
-                        <Icon className="h-5 w-5 text-emerald-400" />
+                    <div className="flex items-start gap-4 p-3.5 rounded-2xl apple-glass-pill transition-all duration-200 border border-violet-500/20 hover:border-cyan-400/40">
+                      <div className="flex-shrink-0 rounded-xl bg-violet-500/20 border border-violet-400/30 p-2.5">
+                        <Icon className="h-5 w-5 text-cyan-400" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-[11px] text-zinc-400 font-mono uppercase tracking-wider">
@@ -187,17 +186,17 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-zinc-400">
-              <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="mt-8 pt-6 border-t border-violet-500/20 flex items-center justify-between text-xs font-mono text-zinc-400">
+              <span className="flex items-center gap-1.5 text-cyan-400 font-medium">
+                <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
                 Available immediately
               </span>
               <span>Thrissur, Kerala</span>
             </div>
-          </GlowingCard>
+          </div>
 
-          {/* Contact form */}
-          <GlowingCard className="p-7 sm:p-8">
+          {/* Contact form card */}
+          <div className="apple-glass-card rounded-[2rem] p-7 sm:p-8 border border-violet-500/25">
             <h3 className="text-xl font-bold text-white mb-2">
               Send a Message
             </h3>
@@ -218,7 +217,7 @@ export function Contact() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => handleChange("name", e.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-white/[0.04] backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-400 focus:bg-white/[0.08] focus:outline-none transition-all"
+                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
                   placeholder="Your name"
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
@@ -248,7 +247,7 @@ export function Contact() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleChange("email", e.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-white/[0.04] backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-400 focus:bg-white/[0.08] focus:outline-none transition-all"
+                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
                   placeholder="you@example.com"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
@@ -278,7 +277,7 @@ export function Contact() {
                   type="text"
                   value={formData.subject}
                   onChange={(e) => handleChange("subject", e.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-white/[0.04] backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-400 focus:bg-white/[0.08] focus:outline-none transition-all"
+                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
                   placeholder="Project inquiry"
                   aria-invalid={!!errors.subject}
                   aria-describedby={
@@ -310,7 +309,7 @@ export function Contact() {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}
-                  className="w-full rounded-xl border border-white/15 bg-white/[0.04] backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-400 focus:bg-white/[0.08] focus:outline-none transition-all resize-none"
+                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all resize-none"
                   placeholder="Tell me about your project..."
                   aria-invalid={!!errors.message}
                   aria-describedby={
@@ -331,7 +330,7 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="apple-primary-btn w-full flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-slate-950 tracking-wide transition-all"
+                className="apple-primary-btn w-full flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold tracking-wide transition-all shadow-lg"
               >
                 <Send className="h-4 w-4" />
                 Send Message
@@ -343,13 +342,13 @@ export function Contact() {
               <div
                 role="status"
                 aria-live="polite"
-                className="mt-4 flex items-center gap-2 rounded-lg border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-400"
+                className="mt-4 flex items-center gap-2 rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 text-sm text-cyan-300"
               >
-                <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
+                <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-cyan-400" />
                 {toast}
               </div>
             )}
-          </GlowingCard>
+          </div>
         </div>
       </div>
     </section>
