@@ -129,36 +129,36 @@ export function Contact() {
   );
 
   return (
-    <section id="contact" className="py-24 sm:py-32 relative">
+    <section id="contact" className="py-20 sm:py-32 relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Let's Connect"
           subtitle="Have a backend architecture, microservices project, or full-stack opportunity in mind?"
         />
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+        <div className="mt-10 sm:mt-12 grid gap-6 sm:gap-8 lg:grid-cols-2">
           {/* Contact info card */}
-          <div className="apple-glass-card rounded-[2rem] p-7 sm:p-8 flex flex-col justify-between border border-violet-500/25">
+          <div className="apple-glass-card rounded-[1.6rem] sm:rounded-[2rem] p-5 sm:p-7 md:p-8 flex flex-col justify-between border border-violet-500/25">
             <div>
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 sm:mb-2">
                 Contact Information
               </h3>
-              <p className="text-sm text-zinc-400 mb-6">
+              <p className="text-xs sm:text-sm text-zinc-400 mb-5 sm:mb-6">
                 Feel free to reach out directly via email, phone, or LinkedIn.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {contactInfo.map((item) => {
                   const Icon = item.icon;
                   const content = (
-                    <div className="flex items-start gap-4 p-3.5 rounded-2xl apple-glass-pill transition-all duration-200 border border-violet-500/20 hover:border-cyan-400/40">
-                      <div className="flex-shrink-0 rounded-xl bg-violet-500/20 border border-violet-400/30 p-2.5">
-                        <Icon className="h-5 w-5 text-cyan-400" />
+                    <div className="flex items-start gap-3.5 p-3 sm:p-3.5 rounded-2xl apple-glass-pill transition-all duration-200 border border-violet-500/20 hover:border-cyan-400/40">
+                      <div className="flex-shrink-0 rounded-xl bg-violet-500/20 border border-violet-400/30 p-2 sm:p-2.5">
+                        <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-400" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[11px] text-zinc-400 font-mono uppercase tracking-wider">
+                        <p className="text-[10px] sm:text-[11px] text-zinc-400 font-mono uppercase tracking-wider">
                           {item.label}
                         </p>
-                        <p className="text-sm text-zinc-200 font-medium mt-0.5 break-all">
+                        <p className="text-xs sm:text-sm text-zinc-200 font-medium mt-0.5 break-all">
                           {item.value}
                         </p>
                       </div>
@@ -186,7 +186,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-violet-500/20 flex items-center justify-between text-xs font-mono text-zinc-400">
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-violet-500/20 flex items-center justify-between text-xs font-mono text-zinc-400">
               <span className="flex items-center gap-1.5 text-cyan-400 font-medium">
                 <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
                 Available immediately
@@ -196,19 +196,19 @@ export function Contact() {
           </div>
 
           {/* Contact form card */}
-          <div className="apple-glass-card rounded-[2rem] p-7 sm:p-8 border border-violet-500/25">
-            <h3 className="text-xl font-bold text-white mb-2">
+          <div className="apple-glass-card rounded-[1.6rem] sm:rounded-[2rem] p-5 sm:p-7 md:p-8 border border-violet-500/25">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 sm:mb-2">
               Send a Message
             </h3>
-            <p className="text-sm text-zinc-400 mb-6">
+            <p className="text-xs sm:text-sm text-zinc-400 mb-5 sm:mb-6">
               I typically reply within a few hours.
             </p>
-            <form onSubmit={handleSubmit} noValidate className="space-y-4">
+            <form onSubmit={handleSubmit} noValidate className="space-y-3.5 sm:space-y-4">
               {/* Name */}
               <div>
                 <label
                   htmlFor="contact-name"
-                  className="block text-sm text-zinc-400 mb-1.5"
+                  className="block text-xs sm:text-sm text-zinc-400 mb-1"
                 >
                   Name
                 </label>
@@ -217,7 +217,7 @@ export function Contact() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => handleChange("name", e.target.value)}
-                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
+                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-3.5 sm:px-4 py-2.5 text-base sm:text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
                   placeholder="Your name"
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
@@ -238,7 +238,7 @@ export function Contact() {
               <div>
                 <label
                   htmlFor="contact-email"
-                  className="block text-sm text-zinc-400 mb-1.5"
+                  className="block text-xs sm:text-sm text-zinc-400 mb-1"
                 >
                   Email
                 </label>
@@ -247,7 +247,7 @@ export function Contact() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleChange("email", e.target.value)}
-                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
+                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-3.5 sm:px-4 py-2.5 text-base sm:text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
                   placeholder="you@example.com"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
@@ -268,7 +268,7 @@ export function Contact() {
               <div>
                 <label
                   htmlFor="contact-subject"
-                  className="block text-sm text-zinc-400 mb-1.5"
+                  className="block text-xs sm:text-sm text-zinc-400 mb-1"
                 >
                   Subject
                 </label>
@@ -277,7 +277,7 @@ export function Contact() {
                   type="text"
                   value={formData.subject}
                   onChange={(e) => handleChange("subject", e.target.value)}
-                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
+                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-3.5 sm:px-4 py-2.5 text-base sm:text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all"
                   placeholder="Project inquiry"
                   aria-invalid={!!errors.subject}
                   aria-describedby={
@@ -300,7 +300,7 @@ export function Contact() {
               <div>
                 <label
                   htmlFor="contact-message"
-                  className="block text-sm text-zinc-400 mb-1.5"
+                  className="block text-xs sm:text-sm text-zinc-400 mb-1"
                 >
                   Message
                 </label>
@@ -309,7 +309,7 @@ export function Contact() {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}
-                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all resize-none"
+                  className="w-full rounded-xl border border-violet-500/25 bg-black/50 backdrop-blur-md px-3.5 sm:px-4 py-2.5 text-base sm:text-sm text-white placeholder:text-zinc-600 focus:border-cyan-400 focus:bg-white/[0.06] focus:outline-none transition-all resize-none"
                   placeholder="Tell me about your project..."
                   aria-invalid={!!errors.message}
                   aria-describedby={
@@ -330,7 +330,7 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="apple-primary-btn w-full flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold tracking-wide transition-all shadow-lg"
+                className="apple-primary-btn w-full flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold tracking-wide transition-all shadow-lg min-h-[44px]"
               >
                 <Send className="h-4 w-4" />
                 Send Message
