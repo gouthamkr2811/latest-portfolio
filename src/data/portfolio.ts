@@ -79,6 +79,7 @@ export const profile: Profile = {
 };
 
 export const navLinks: NavLink[] = [
+  { label: "Architecture", href: "#architecture" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },

@@ -25,8 +25,8 @@ export function AnimatedBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-black">
-      {/* Original Pinterest Video Wallpaper (https://pin.it/6TIoMj3Q8) */}
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#03060a]">
+      {/* Background Video with Light Green / Emerald Filter (No pink) */}
       <video
         ref={videoRef}
         autoPlay
@@ -34,17 +34,18 @@ export function AnimatedBackground() {
         muted
         playsInline
         poster="/videos/background-poster.jpg"
-        className="absolute inset-0 w-full h-full object-cover opacity-85 sm:opacity-90 transition-opacity duration-1000 will-change-transform filter brightness-[0.92] contrast-[1.04]"
+        className="absolute inset-0 w-full h-full object-cover opacity-75 sm:opacity-85 transition-opacity duration-1000 will-change-transform filter brightness-[0.88] contrast-[1.08] saturate-[1.15] hue-rotate-[95deg]"
       >
         <source src="/videos/background.mp4" type="video/mp4" />
       </video>
 
       {/* Subtle Cinematic Contrast Overlay (preserves text readability while showing the full video) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/75 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_35%,rgba(0,0,0,0.65)_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#03060a]/75 via-[#03060a]/45 to-[#03060a]/85 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_30%,rgba(3,6,10,0.7)_100%)] pointer-events-none" />
 
-      {/* Subtle ambient light glow that breathes with the background */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-emerald-500/10 blur-[160px] pointer-events-none" />
+      {/* Subtle ambient light green glow that breathes with the background */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-emerald-500/12 blur-[160px] pointer-events-none" />
+      <div className="absolute top-2/3 right-1/4 w-[500px] h-[500px] rounded-full bg-teal-500/10 blur-[150px] pointer-events-none" />
     </div>
   );
 }
